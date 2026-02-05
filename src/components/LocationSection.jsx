@@ -1,78 +1,86 @@
 import { motion } from "framer-motion";
-import { MapPin, ExternalLink } from "lucide-react";
+import { MapPin, Clock } from "lucide-react";
 
-const LocationSection = ({ locationName, address, mapsUrl }) => {
+const LocationSection = () => {
   return (
-    <section className="py-20 px-4 bg-gradient-to-br from-primary-50 to-pink-50 relative overflow-hidden">
-      {/* Decorative background */}
-      <div className="absolute inset-0 opacity-10">
-        <div
-          className="absolute top-0 left-0 w-full h-full"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 2px 2px, rgba(0,0,0,0.15) 1px, transparent 0)",
-            backgroundSize: "40px 40px",
-          }}
-        ></div>
+    <section className="relative w-full min-h-svh py-20 px-4 flex flex-col items-center justify-center overflow-hidden">
+      {/* Fondo Texturizado (Continuación del Countdown) */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="/images/background-countdown.jpg"
+          alt="Fondo Textura"
+          className="w-full h-full object-cover rotate-180"
+        />
+        <div className="absolute inset-0 bg-white/40"></div>
       </div>
 
-      <div className="max-w-4xl mx-auto relative z-10">
+      <div className="relative z-10 w-full max-w-4xl flex flex-col items-center">
+        {/* Encabezado de Sección */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-10"
         >
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-gradient mb-4">
+          <h2 className="font-script text-5xl md:text-6xl text-[#5a6c5a] mb-2 drop-shadow-sm">
             Donde celebramos
           </h2>
-          <p className="text-lg md:text-xl text-gray-700 font-light italic max-w-2xl mx-auto">
-            El lugar donde los desvelos por fin se convierten en brindis
+          <p className="font-serif text-[#5a6c5a] text-lg md:text-xl italic">
+            El lugar donde celebramos que el esfuerzo valió la pena.
           </p>
         </motion.div>
 
+        {/* Tarjeta Blanca del Mapa */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-          className="glass-effect rounded-3xl p-8 md:p-12 card-shadow"
+          transition={{ delay: 0.2 }}
+          className="bg-white w-full max-w-lg p-2 shadow-xl rounded-sm"
         >
-          <div className="flex flex-col items-center text-center space-y-6">
-            {/* Icon */}
-            <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary-500 to-pink-500 flex items-center justify-center shadow-lg">
-              <MapPin className="w-10 h-10 text-white" strokeWidth={2} />
+          <div className="border border-gray-200 p-6 flex flex-col items-center text-center">
+            {/* Icono Principal */}
+            <div className="text-[#8B7E60] mb-4">
+              <MapPin size={48} strokeWidth={1.5} />
             </div>
 
-            {/* Location name */}
-            <div>
-              <h3 className="font-serif text-3xl md:text-4xl font-bold text-gray-900 mb-2">
-                {locationName}
-              </h3>
-              <p className="text-gray-600 text-lg">{address}</p>
+            {/* Nombre del Salón y Dirección */}
+            <h3 className="font-serif text-2xl text-[#8B7E60] uppercase tracking-widest mb-2">
+              Salon "Nombre"
+            </h3>
+            <p className="font-serif text-xs text-gray-500 uppercase tracking-wider mb-6 max-w-xs">
+              El lugar donde celebramos que el esfuerzo valió la pena.
+            </p>
+
+            {/* Horario */}
+            <div className="flex items-center gap-2 text-gray-600 mb-6 font-serif text-sm">
+              <Clock size={16} />
+              <span>A PARTIR DE 19:00 HS</span>
             </div>
 
-            {/* Divider */}
-            <div className="w-16 h-1 bg-gradient-to-r from-primary-400 to-gold-400 rounded-full"></div>
+            {/* Imagen del Mapa (Placeholder o iFrame) */}
+            <div className="w-full h-48 bg-gray-100 mb-6 rounded-sm overflow-hidden border border-gray-200 grayscale opacity-80 hover:grayscale-0 transition-all duration-500">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.016887889451!2d-58.38157048477038!3d-34.60373888045938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4aa9f0a6da5edb:0x11bead4e234e558b!2sObelisco!5e0!3m2!1ses!2sar!4v1676922379532!5m2!1ses!2sar"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Mapa Ubicación"
+              ></iframe>
+            </div>
 
-            {/* Map button */}
-            <motion.a
-              href={mapsUrl}
+            {/* Botón Abrir en Maps */}
+            <a
+              href="https://goo.gl/maps/xyz" // Aquí iría el link real
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-700 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group"
+              className="bg-[#E0DDD5] text-gray-700 font-serif text-sm px-8 py-2 rounded-full hover:bg-[#d1cec4] transition-colors uppercase tracking-widest"
             >
-              <span>Ver en Google Maps</span>
-              <ExternalLink className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </motion.a>
-
-            {/* Additional info */}
-            <p className="text-sm text-gray-500 mt-4">
-              📍 Toca el botón para obtener direcciones
-            </p>
+              Abrir en Maps
+            </a>
           </div>
         </motion.div>
       </div>

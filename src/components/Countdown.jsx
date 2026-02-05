@@ -50,7 +50,7 @@ const Countdown = ({ targetDate }) => {
           className="w-full h-full object-fill"
         />
         {/* Overlay ligero para mejorar contraste si es necesario */}
-        <div className="absolute inset-0 bg-white/10"></div>
+        <div className="absolute inset-0 bg-white/40"></div>
       </div>
 
       {/* 2. Moños Decorativos */}

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, CheckCircle } from "lucide-react";
 
 const RSVPForm = () => {
   const [formData, setFormData] = useState({
@@ -73,26 +72,29 @@ const RSVPForm = () => {
 
   if (isSubmitted) {
     return (
-      <section className="py-20 px-4">
-        <div className="max-w-2xl mx-auto">
+      <section className="relative w-full py-20 px-4 flex flex-col items-center justify-center overflow-hidden min-h-[60vh]">
+        {/* Fondo Texturizado */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/images/background-countdown.jpg"
+            alt="Fondo Textura"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-white/40"></div>
+        </div>
+
+        <div className="relative z-10 w-full max-w-lg">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="glass-effect rounded-3xl p-12 text-center card-shadow"
+            className="bg-white p-12 text-center shadow-xl rounded-sm border border-gray-100"
           >
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-            >
-              <CheckCircle className="w-20 h-20 text-green-500 mx-auto mb-6" />
-            </motion.div>
-            <h3 className="font-serif text-3xl font-bold text-gradient mb-4">
+            <h3 className="font-script text-4xl text-[#5a6c5a] mb-4">
               ¡Confirmación Recibida!
             </h3>
-            <p className="text-gray-600 text-lg">
-              Gracias por confirmar tu asistencia. ¡Nos vemos en la celebración!
-              🎉
+            <p className="font-serif text-gray-600 text-lg">
+              Gracias por confirmar tu asistencia. <br />
+              ¡Nos vemos en la celebración!
             </p>
           </motion.div>
         </div>
@@ -101,190 +103,175 @@ const RSVPForm = () => {
   }
 
   return (
-    <section className="py-20 px-4 relative">
-      <div className="max-w-2xl mx-auto">
+    <section className="relative w-full min-h-svh py-20 px-4 flex flex-col items-center justify-center overflow-hidden">
+      {/* Fondo Texturizado */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="/images/background-countdown.jpg"
+          alt="Fondo Textura"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-white/40"></div>
+      </div>
+
+      <div className="relative z-10 w-full max-w-4xl flex flex-col items-center">
+        {/* Encabezado de Sección */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-10"
         >
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-gradient mb-4">
-            Confirmación de Asistencia
+          <h2 className="font-script text-5xl md:text-6xl text-[#5a6c5a] mb-2 drop-shadow-sm">
+            Confirma tu asistencia
           </h2>
-          <p className="text-lg text-gray-600 font-light">
-            Por favor confirma tu asistencia para que podamos preparar todo con
-            cariño
+          <p className="font-serif text-[#5a6c5a] text-lg md:text-xl italic max-w-2xl px-4">
+            Sería un honor contar con tu presencia en esta noche tan especial.
           </p>
         </motion.div>
 
-        <motion.form
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+        {/* Tarjeta del Formulario */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-          onSubmit={handleSubmit}
-          className="glass-effect rounded-3xl p-8 md:p-10 card-shadow space-y-6"
+          transition={{ delay: 0.2 }}
+          className="bg-white w-full max-w-lg shadow-xl rounded-sm p-4"
         >
-          {/* Name */}
-          <div>
-            <label
-              htmlFor="name"
-              className="block text-sm font-semibold text-gray-700 mb-2"
-            >
-              Nombre Completo *
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              className={`w-full px-4 py-3 rounded-xl border-2 ${
-                errors.name ? "border-red-400" : "border-gray-200"
-              } focus:border-primary-500 focus:outline-none transition-colors bg-white/50`}
-              placeholder="Tu nombre"
-            />
-            {errors.name && (
-              <p className="text-red-500 text-sm mt-1">{errors.name}</p>
-            )}
-          </div>
-
-          {/* Attending */}
-          <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-3">
-              ¿Confirmas tu asistencia? *
-            </label>
-            <div className="flex gap-4">
-              <label className="flex-1">
+          <div className="border border-gray-100 p-6 md:p-8">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Nombre */}
+              <div>
+                <label className="block font-serif text-[#8B7E60] uppercase tracking-widest text-sm mb-2">
+                  Nombre Completo
+                </label>
                 <input
-                  type="radio"
-                  name="attending"
-                  value="yes"
-                  checked={formData.attending === "yes"}
+                  type="text"
+                  name="name"
+                  value={formData.name}
                   onChange={handleChange}
-                  className="sr-only peer"
+                  className="w-full bg-[#E8E6E1] border-none rounded-md px-4 py-3 font-serif text-gray-700 placeholder-gray-400 focus:ring-1 focus:ring-[#8B7E60] outline-none transition-all"
+                  placeholder="Tu nombre"
                 />
-                <div className="cursor-pointer px-6 py-3 rounded-xl border-2 border-gray-200 peer-checked:border-primary-500 peer-checked:bg-primary-50 transition-all text-center font-medium hover:border-primary-300">
-                  ✅ Sí, asistiré
+                {errors.name && (
+                  <p className="text-red-500 text-xs mt-1 font-serif italic">
+                    {errors.name}
+                  </p>
+                )}
+              </div>
+
+              {/* Teléfono (Agregado para coincidir con diseño, aunque no estaba en estado original, lo mapearemos a algo o lo ignoramos visualmente si no es crítico, pero mejor agregarlo al estado si el usuario quiere réplica exacta. Asumiré mantener estado original por ahora pero cambiar diseño visual de Attending) */}
+
+              {/* Asistencia */}
+              <div>
+                <label className="block font-serif text-[#8B7E60] uppercase tracking-widest text-sm mb-3">
+                  ¿Asistirás al evento?
+                </label>
+                <div className="flex items-center gap-6">
+                  <label className="flex items-center cursor-pointer gap-2">
+                    <input
+                      type="radio"
+                      name="attending"
+                      value="yes"
+                      checked={formData.attending === "yes"}
+                      onChange={handleChange}
+                      className="accent-[#5a6c5a] w-4 h-4 cursor-pointer"
+                    />
+                    <span className="font-serif text-gray-600 text-sm">
+                      ¡Sí, claro!
+                    </span>
+                  </label>
+
+                  <label className="flex items-center cursor-pointer gap-2">
+                    <input
+                      type="radio"
+                      name="attending"
+                      value="no"
+                      checked={formData.attending === "no"}
+                      onChange={handleChange}
+                      className="accent-[#5a6c5a] w-4 h-4 cursor-pointer"
+                    />
+                    <span className="font-serif text-gray-600 text-sm">
+                      No asistiré
+                    </span>
+                  </label>
                 </div>
-              </label>
-              <label className="flex-1">
-                <input
-                  type="radio"
-                  name="attending"
-                  value="no"
-                  checked={formData.attending === "no"}
-                  onChange={handleChange}
-                  className="sr-only peer"
-                />
-                <div className="cursor-pointer px-6 py-3 rounded-xl border-2 border-gray-200 peer-checked:border-gray-400 peer-checked:bg-gray-50 transition-all text-center font-medium hover:border-gray-300">
-                  ❌ No podré asistir
-                </div>
-              </label>
-            </div>
-            {errors.attending && (
-              <p className="text-red-500 text-sm mt-1">{errors.attending}</p>
-            )}
-          </div>
+                {errors.attending && (
+                  <p className="text-red-500 text-xs mt-1 font-serif italic">
+                    {errors.attending}
+                  </p>
+                )}
+              </div>
 
-          {/* Guests - only show if attending */}
-          {formData.attending === "yes" && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              transition={{ duration: 0.3 }}
-            >
-              <label
-                htmlFor="guests"
-                className="block text-sm font-semibold text-gray-700 mb-2"
-              >
-                Cantidad de personas
-              </label>
-              <select
-                id="guests"
-                name="guests"
-                value={formData.guests}
-                onChange={handleChange}
-                className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary-500 focus:outline-none transition-colors bg-white/50 cursor-pointer"
-              >
-                <option value="1">1 persona</option>
-                <option value="2">2 personas</option>
-              </select>
-            </motion.div>
-          )}
+              {/* Acompañantes y Dieta (Condicionales simplificados visualmente) */}
+              {formData.attending === "yes" && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  className="space-y-6"
+                >
+                  <div>
+                    <label className="block font-serif text-[#8B7E60] uppercase tracking-widest text-sm mb-2">
+                      Numero de acompañantes
+                    </label>
+                    <select // Cambiado a select simple o input pequeño según diseño (imagen muestra input "0")
+                      name="guests"
+                      value={formData.guests}
+                      onChange={handleChange}
+                      className="w-20 bg-[#E8E6E1] border-none rounded-md px-3 py-2 font-serif text-gray-700 focus:ring-1 focus:ring-[#8B7E60] outline-none"
+                    >
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                    </select>
+                  </div>
 
-          {/* Dietary restrictions - only show if attending */}
-          {formData.attending === "yes" && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              transition={{ duration: 0.3, delay: 0.1 }}
-            >
-              <label
-                htmlFor="dietary"
-                className="block text-sm font-semibold text-gray-700 mb-2"
-              >
-                Restricciones alimenticias
-              </label>
-              <input
-                type="text"
-                id="dietary"
-                name="dietary"
-                value={formData.dietary}
-                onChange={handleChange}
-                className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary-500 focus:outline-none transition-colors bg-white/50"
-                placeholder="Vegetariano, vegano, alergias, etc. (opcional)"
-              />
-            </motion.div>
-          )}
+                  <div>
+                    <label className="block font-serif text-[#8B7E60] uppercase tracking-widest text-sm mb-2">
+                      Restricciones alimenticias
+                    </label>
+                    <input
+                      type="text"
+                      name="dietary"
+                      value={formData.dietary}
+                      onChange={handleChange}
+                      placeholder="Opcional"
+                      className="w-full bg-[#E8E6E1] border-none rounded-md px-4 py-3 font-serif text-gray-700 placeholder-gray-400 focus:ring-1 focus:ring-[#8B7E60] outline-none"
+                    />
+                  </div>
 
-          {/* Song - only show if attending */}
-          {formData.attending === "yes" && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              transition={{ duration: 0.3, delay: 0.2 }}
-            >
-              <label
-                htmlFor="song"
-                className="block text-sm font-semibold text-gray-700 mb-2"
-              >
-                ¿Qué canción no puede faltar para que bailes? 🎵 *
-              </label>
-              <input
-                type="text"
-                id="song"
-                name="song"
-                value={formData.song}
-                onChange={handleChange}
-                className={`w-full px-4 py-3 rounded-xl border-2 ${
-                  errors.song ? "border-red-400" : "border-gray-200"
-                } focus:border-primary-500 focus:outline-none transition-colors bg-white/50`}
-                placeholder="Nombre de la canción y artista"
-              />
-              {errors.song && (
-                <p className="text-red-500 text-sm mt-1">{errors.song}</p>
+                  <div>
+                    <label className="block font-serif text-[#8B7E60] uppercase tracking-widest text-sm mb-2">
+                      ¿Qué canción no puede faltar en la fiesta?
+                    </label>
+                    <input
+                      type="text"
+                      name="song"
+                      value={formData.song}
+                      onChange={handleChange}
+                      placeholder="Canción"
+                      className="w-full bg-[#E8E6E1] border-none rounded-md px-4 py-3 font-serif text-gray-700 placeholder-gray-400 focus:ring-1 focus:ring-[#8B7E60] outline-none"
+                    />
+                    {errors.song && (
+                      <p className="text-red-500 text-xs mt-1 font-serif italic">
+                        {errors.song}
+                      </p>
+                    )}
+                  </div>
+                </motion.div>
               )}
-            </motion.div>
-          )}
 
-          {/* Submit button */}
-          <motion.button
-            type="submit"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="w-full px-8 py-4 bg-gradient-to-r from-primary-600 to-pink-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3 group"
-          >
-            <span>Enviar Confirmación</span>
-            <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </motion.button>
-
-          <p className="text-xs text-gray-500 text-center mt-4">
-            * Campos obligatorios
-          </p>
-        </motion.form>
+              {/* Botón */}
+              <div className="pt-4">
+                <button
+                  type="submit"
+                  className="bg-[#7A8B7A] text-white font-serif uppercase tracking-widest text-sm px-10 py-3 rounded-full hover:bg-[#697a69] transition-colors shadow-sm"
+                >
+                  Enviar
+                </button>
+              </div>
+            </form>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
