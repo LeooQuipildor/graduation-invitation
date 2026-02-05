@@ -2,72 +2,75 @@ import { motion } from "framer-motion";
 
 const HeroSection = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 py-20 relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse-slow"></div>
-        <div
-          className="absolute bottom-20 right-10 w-96 h-96 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse-slow"
-          style={{ animationDelay: "1s" }}
-        ></div>
-        <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gold-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-slow"
-          style={{ animationDelay: "2s" }}
-        ></div>
+    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+      {/* Background Image - El diseño principal */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="/images/hero-background.jpg"
+          alt="Graduation Background"
+          className="w-full h-full object-cover object-center"
+        />
+        {/* Overlay sutil opcional para asegurar contraste del texto */}
+        <div className="absolute inset-0 bg-white/30"></div>
       </div>
 
-      <div className="max-w-5xl mx-auto text-center relative z-10">
+      <div className="w-full max-w-4xl mx-auto text-center relative z-10 px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 1 }}
+          className="flex flex-col items-center"
         >
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="inline-block mb-8"
-          >
-            <span className="px-6 py-2 rounded-full glass-effect text-primary-700 font-medium text-sm tracking-wide">
-              ✨ Invitación Especial
-            </span>
-          </motion.div>
+          {/* Texto de Invitación */}
+          <p className="font-serif text-[#1e1e1e] text-sm md:text-base leading-relaxed tracking-wide mb-4 uppercase font-medium">
+            Acompáñame a celebrar que oficialmente
+            <br />
+            soy contadora pública
+          </p>
 
-          {/* Main Heading */}
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight"
-          >
-            <span className="block text-gradient">Acompáñame a celebrar</span>
-            <span className="block mt-2 text-gradient-gold">
-              que oficialmente soy
-            </span>
-            <span className="block mt-2 text-primary-900">
-              Contadora Pública
-            </span>
-          </motion.h1>
+          {/* Título Profesional */}
+          <h1 className="font-script text-6xl md:text-8xl text-black mb-4 drop-shadow-sm">
+            Contadora Publica
+          </h1>
 
-          {/* Subtitle */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8, duration: 0.8 }}
-            className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto font-light leading-relaxed"
-          >
-            Después de años de esfuerzo, desvelos y dedicación, llegó el momento
-            de celebrar este logro juntos.
-          </motion.p>
+          {/* Separador simple */}
+          <div className="h-12 w-[1.5px] bg-black/80 mb-4"></div>
 
-          {/* Decorative divider */}
-          <motion.div
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ delay: 1, duration: 0.8 }}
-            className="w-24 h-1 bg-gradient-to-r from-primary-500 to-gold-500 mx-auto mt-12 rounded-full"
-          ></motion.div>
+          {/* Nombre */}
+          <h2 className="font-script text-5xl md:text-7xl text-black mb-10 drop-shadow-sm">
+            Emilia Rosa Guzman Julio
+          </h2>
+
+          {/* Sección de Fecha y Hora - Diseño limpio */}
+          <div className="w-full max-w-xs mx-auto mb-10">
+            <div className="text-center font-serif text-3xl text-black mb-2">
+              Marzo
+            </div>
+
+            <div className="flex items-center justify-between border-t border-b border-black/80 py-3">
+              <span className="font-serif text-xl text-black w-1/3 text-left">
+                Sabado
+              </span>
+              <span className="font-serif text-7xl text-black font-bold w-1/3 leading-none">
+                01
+              </span>
+              <span className="font-serif text-xl text-black w-1/3 text-right">
+                19:00hs
+              </span>
+            </div>
+          </div>
+
+          {/* Frase Final */}
+          <div className="font-serif text-[#1e1e1e] text-sm md:text-base italic leading-relaxed max-w-md mx-auto font-medium">
+            <p className="mb-2">
+              "Es increíble hasta donde llega uno sin saberse las tablas de
+              multiplicar.
+            </p>
+            <p className="mb-2">Pero con calculadora.</p>
+            <p className="font-semibold text-black not-italic">
+              Soy contadora, no calculadora."
+            </p>
+          </div>
         </motion.div>
       </div>
     </section>

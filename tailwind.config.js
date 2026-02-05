@@ -32,6 +32,7 @@ export default {
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],
         serif: ["Playfair Display", "Georgia", "serif"],
+        script: ["Pinyon Script", "cursive"],
       },
       animation: {
         "fade-in": "fadeIn 0.8s ease-in-out",
