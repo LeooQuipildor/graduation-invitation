@@ -79,7 +79,7 @@ const Countdown = ({ targetDate }) => {
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-script text-5xl mobile-m:text-6xl md:text-7xl text-[#5a6c5a] mb-2 drop-shadow-sm"
+          className="font-script text-5xl mobile-m:text-6xl md:text-7xl text-gold-engraved mb-2 drop-shadow-sm"
         >
           Cuenta atras
         </motion.h2>
@@ -90,7 +90,7 @@ const Countdown = ({ targetDate }) => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="font-script text-lg mobile-m:text-xl md:text-2xl text-[#5a6c5a] mb-8 mobile-m:mb-12 leading-tight max-w-sm mobile-s:mb-1"
+          className="font-script text-lg mobile-m:text-xl md:text-2xl text-gold-engraved mb-8 mobile-m:mb-12 leading-tight max-w-sm mobile-s:mb-1"
         >
           Cada segundo nos acerca al final de una gran etapa y al comienzo de
           una nueva.

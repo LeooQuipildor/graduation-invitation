@@ -19,6 +19,13 @@
     @apply bg-gradient-to-r from-primary-600 via-purple-600 to-pink-600 bg-clip-text text-transparent;
   }
 
+  .text-gold-engraved {
+    color: #c5b37f; /* Dorado más claro y brillante */
+    text-shadow:
+      1px 1px 0px rgba(255, 255, 255, 0.95), /* Luz intensa nítida */
+      -0.5px -0.5px 0px rgba(0, 0, 0, 0.25);   /* Profundidad nítida */
+  }
+
   .text-gradient-gold {
     @apply bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 bg-clip-text text-transparent;
   }

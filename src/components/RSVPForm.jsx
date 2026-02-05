@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { CheckCircle } from "lucide-react";
 
 const RSVPForm = () => {
   const [formData, setFormData] = useState({
@@ -122,10 +123,10 @@ const RSVPForm = () => {
           viewport={{ once: true }}
           className="text-center mb-10"
         >
-          <h2 className="font-script text-5xl md:text-6xl text-[#5a6c5a] mb-2 drop-shadow-sm">
+          <h2 className="font-script text-5xl md:text-6xl text-gold-engraved mb-2 drop-shadow-sm">
             Confirma tu asistencia
           </h2>
-          <p className="font-serif text-[#5a6c5a] text-lg md:text-xl italic max-w-2xl px-4">
+          <p className="font-serif text-gold-engraved text-lg md:text-xl italic max-w-2xl px-4">
             Sería un honor contar con tu presencia en esta noche tan especial.
           </p>
         </motion.div>
@@ -264,7 +265,7 @@ const RSVPForm = () => {
               <div className="pt-4">
                 <button
                   type="submit"
-                  className="bg-[#7A8B7A] text-white font-serif uppercase tracking-widest text-sm px-10 py-3 rounded-full hover:bg-[#697a69] transition-colors shadow-sm"
+                  className="bg-[#7A8B7A] text-white font-serif font-bold text-sm px-12 py-3 hover:bg-[#697a69] transition-colors uppercase tracking-[0.2em] shadow-md rounded-none"
                 >
                   Enviar
                 </button>

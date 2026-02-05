@@ -27,7 +27,8 @@ const HeroSection = () => {
           </p>
 
           {/* Título Profesional */}
-          <h1 className="font-script text-4xl mobile-s:text-3xl mobile-m:text-5xl md:text-6xl lg:text-8xl text-black mb-3 mobile-m:mb-4 drop-shadow-sm leading-tight">
+          {/* Título Profesional */}
+          <h1 className="font-script text-4xl mobile-s:text-3xl mobile-m:text-5xl md:text-6xl lg:text-8xl text-gold-engraved mb-3 mobile-m:mb-4 drop-shadow-sm leading-tight">
             Contadora Publica
           </h1>
 
@@ -35,7 +36,7 @@ const HeroSection = () => {
           <div className="h-8 mobile-m:h-12 w-[1.5px] bg-black/80 mb-3 mobile-s:h-6 mobile-s:w-[1px] mobile-m:mb-4"></div>
 
           {/* Nombre */}
-          <h2 className="font-script text-3xl mobile-s:text-2xl mobile-s:mb-2 mobile-m:text-4xl md:text-5xl lg:text-7xl text-black mb-6 mobile-m:mb-10 drop-shadow-sm leading-tight px-2">
+          <h2 className="font-script text-3xl mobile-s:text-2xl mobile-s:mb-2 mobile-m:text-4xl md:text-5xl lg:text-7xl text-gold-engraved mb-6 mobile-m:mb-10 drop-shadow-sm leading-tight px-2">
             Emilia Rosa Guzman Julio
           </h2>
 
