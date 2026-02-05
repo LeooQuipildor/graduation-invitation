@@ -3,6 +3,12 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      screens: {
+        'mobile-s': '320px',
+        'mobile-m': '390px',
+        'mobile-l': '428px',
+        'tablet': '744px',
+      },
       colors: {
         primary: {
           50: "#fdf4ff",
