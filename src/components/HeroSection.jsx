@@ -72,12 +72,11 @@ const HeroSection = () => {
           {/* Frase Final */}
           <div className="font-serif text-[#1e1e1e] text-xs mobile-m:text-sm md:text-base italic leading-relaxed max-w-md mx-auto font-medium px-4">
             <p className="mb-1 mobile-m:mb-2">
-              "Es increíble hasta donde llega uno sin saberse las tablas de
+              Es increíble hasta donde llega uno sin saberse las tablas de
               multiplicar.
             </p>
-            <p className="mb-1 mobile-m:mb-2">Pero con calculadora.</p>
-            <p className="font-semibold text-black not-italic">
-              Soy contadora, no calculadora."
+            <p className="mb-1 mobile-m:mb-2">
+              Con calculadora, obvio: soy contadora, no calculadora.
             </p>
           </div>
         </motion.div>

@@ -2,24 +2,30 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const Countdown = ({ targetDate }) => {
-  const calculateTimeLeft = () => {
-    const difference = +new Date(targetDate) - +new Date();
-
-    if (difference > 0) {
-      return {
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / 1000 / 60) % 60),
-        seconds: Math.floor((difference / 1000) % 60),
-      };
-    }
-
-    return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-  };
-
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
 
   useEffect(() => {
+    const calculateTimeLeft = () => {
+      const difference = +new Date(targetDate) - +new Date();
+      let newTimeLeft = {};
+
+      if (difference > 0) {
+        newTimeLeft = {
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+          minutes: Math.floor((difference / 1000 / 60) % 60),
+          seconds: Math.floor((difference / 1000) % 60),
+        };
+      }
+
+      return newTimeLeft;
+    };
+
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
@@ -35,47 +41,78 @@ const Countdown = ({ targetDate }) => {
   ];
 
   return (
-    <section className="py-20 px-4 relative">
-      <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
+    <section className="relative h-svh w-full flex items-center justify-center overflow-hidden">
+      {/* 1. Fondo Full Screen */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="/images/background-countdown.jpg"
+          alt="Fondo Countdown"
+          className="w-full h-full object-fill"
+        />
+        {/* Overlay ligero para mejorar contraste si es necesario */}
+        <div className="absolute inset-0 bg-white/10"></div>
+      </div>
+
+      {/* 2. Moños Decorativos */}
+      {/* Superior */}
+      <div className="absolute top-0 w-full z-20 pointer-events-none flex justify-center">
+        <img
+          src="/images/moños-countdown.png"
+          alt="Moños Arriba"
+          className="w-auto h-auto max-h-[30vh] object-contain"
+        />
+      </div>
+
+      {/* Inferior Invertido */}
+      <div className="absolute bottom-0 w-full z-20 pointer-events-none flex justify-center">
+        <img
+          src="/images/moños-countdown.png"
+          alt="Moños Abajo"
+          className="w-auto h-auto max-h-[30vh] object-contain rotate-180"
+        />
+      </div>
+
+      {/* 3. Contenido Central */}
+      <div className="relative z-30 flex flex-col items-center justify-center text-center px-6 w-full max-w-lg mt-10 mobile-m:mt-0">
+        {/* Título */}
+        <motion.h2
+          initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="font-script text-5xl mobile-m:text-6xl md:text-7xl text-[#5a6c5a] mb-2 drop-shadow-sm"
         >
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-gradient mb-4">
-            Cuenta Atrás
-          </h2>
-          <p className="text-lg md:text-xl text-gray-600 font-light max-w-2xl mx-auto">
-            El esfuerzo valió la pena, ahora solo falta el brindis
-          </p>
-        </motion.div>
+          Cuenta atras
+        </motion.h2>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-          {timeUnits.map((unit, index) => (
+        {/* Subtítulo */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="font-script text-lg mobile-m:text-xl md:text-2xl text-[#5a6c5a] mb-8 mobile-m:mb-12 leading-tight max-w-sm mobile-s:mb-1"
+        >
+          Cada segundo nos acerca al final de una gran etapa y al comienzo de
+          una nueva.
+        </motion.p>
+
+        {/* Cajas del Contador */}
+        <div className="grid grid-cols-2 gap-4 w-full mobile-s:mb-10">
+          {timeUnits.map((item, index) => (
             <motion.div
-              key={unit.label}
-              initial={{ opacity: 0, scale: 0.8 }}
+              key={item.label}
+              initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="glass-effect rounded-2xl p-6 md:p-8 card-shadow hover:shadow-2xl transition-shadow duration-300"
+              transition={{ delay: index * 0.1 + 0.3 }}
+              className="bg-[#b0aca2]/80 backdrop-blur-sm rounded-lg p-3 mobile-m:p-5 flex flex-col items-center justify-center shadow-lg aspect-[4/3]"
             >
-              <div className="text-center">
-                <motion.div
-                  key={unit.value}
-                  initial={{ scale: 1.2, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                  className="font-serif text-5xl md:text-6xl font-bold text-gradient-gold mb-2"
-                >
-                  {String(unit.value).padStart(2, "0")}
-                </motion.div>
-                <div className="text-sm md:text-base font-medium text-gray-600 uppercase tracking-wider">
-                  {unit.label}
-                </div>
-              </div>
+              <span className="font-serif text-3xl mobile-m:text-4xl md:text-5xl text-white font-bold mb-1 drop-shadow-md">
+                {String(item.value || 0).padStart(2, "0")}
+              </span>
+              <span className="font-serif text-xs mobile-m:text-sm md:text-base text-white uppercase tracking-widest font-medium drop-shadow-md">
+                {item.label}
+              </span>
             </motion.div>
           ))}
         </div>
@@ -87,13 +124,7 @@ const Countdown = ({ targetDate }) => {
           viewport={{ once: true }}
           transition={{ delay: 0.6, duration: 0.8 }}
           className="mt-12 text-center"
-        >
-          <div className="inline-flex items-center gap-2 text-primary-600">
-            <span className="text-2xl">🎓</span>
-            <span className="text-sm font-medium">¡Nos vemos pronto!</span>
-            <span className="text-2xl">🥂</span>
-          </div>
-        </motion.div>
+        ></motion.div>
       </div>
     </section>
   );
