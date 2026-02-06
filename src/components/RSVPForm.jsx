@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, Mail } from "lucide-react";
 
 const RSVPForm = () => {
   const [formData, setFormData] = useState({
@@ -140,6 +140,15 @@ const RSVPForm = () => {
           className="bg-white w-full max-w-lg card-strong-shadow rounded-sm p-4"
         >
           <div className="border border-gray-400 p-6 md:p-8">
+            {/* Icono Decorativo */}
+            <div className="text-[#7f8c6c] mb-6 flex justify-center">
+              <Mail
+                size={40}
+                strokeWidth={1.5}
+                className="mobile-m:w-12 mobile-m:h-12"
+              />
+            </div>
+
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Nombre */}
               <div>
@@ -151,7 +160,7 @@ const RSVPForm = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full bg-[#E8E6E1] border-none rounded-md px-4 py-3 font-serif text-gray-700 placeholder-gray-400 focus:ring-1 focus:ring-[#8B7E60] outline-none transition-all"
+                  className="w-full bg-[#E8E6E1] border-none  px-4 py-2 font-serif text-gray-700 placeholder-gray-400 focus:ring-1 focus:ring-[#8B7E60] outline-none transition-all"
                   placeholder="Tu nombre"
                 />
                 {errors.name && (
@@ -219,7 +228,7 @@ const RSVPForm = () => {
                       name="guests"
                       value={formData.guests}
                       onChange={handleChange}
-                      className="w-20 bg-[#E8E6E1] border-none rounded-md px-3 py-2 font-serif text-gray-700 focus:ring-1 focus:ring-[#8B7E60] outline-none"
+                      className="w-20 bg-[#E8E6E1] border-none px-3 py-2 font-serif text-gray-700 focus:ring-1 focus:ring-[#8B7E60] outline-none"
                     >
                       <option value="1">1</option>
                       <option value="2">2</option>
@@ -236,7 +245,7 @@ const RSVPForm = () => {
                       value={formData.dietary}
                       onChange={handleChange}
                       placeholder="Opcional"
-                      className="w-full bg-[#E8E6E1] border-none rounded-md px-4 py-3 font-serif text-gray-700 placeholder-gray-400 focus:ring-1 focus:ring-[#8B7E60] outline-none"
+                      className="w-full bg-[#E8E6E1] border-none px-4 py-2 font-serif text-gray-700 placeholder-gray-400 focus:ring-1 focus:ring-[#8B7E60] outline-none"
                     />
                   </div>
 
@@ -250,7 +259,7 @@ const RSVPForm = () => {
                       value={formData.song}
                       onChange={handleChange}
                       placeholder="Canción"
-                      className="w-full bg-[#E8E6E1] border-none rounded-md px-4 py-3 font-serif text-gray-700 placeholder-gray-400 focus:ring-1 focus:ring-[#8B7E60] outline-none"
+                      className="w-full bg-[#E8E6E1] border-none px-4 py-2 font-serif text-gray-700 placeholder-gray-400 focus:ring-1 focus:ring-[#8B7E60] outline-none"
                     />
                     {errors.song && (
                       <p className="text-red-500 text-xs mt-1 font-serif italic">
@@ -262,7 +271,7 @@ const RSVPForm = () => {
               )}
 
               {/* Botón */}
-              <div className="pt-4">
+              <div className="pt-4 flex justify-center">
                 <button
                   type="submit"
                   className="bg-[#7f8c6c] text-white font-serif font-bold text-sm px-12 py-3 hover:bg-[#6c7a5a] transition-colors uppercase tracking-[0.2em] shadow-md rounded-none"

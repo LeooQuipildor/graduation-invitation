@@ -33,7 +33,7 @@ const HeroSection = () => {
           </h1>
 
           {/* Separador simple */}
-          <div className="h-8 mobile-m:h-12 w-[1.5px] bg-black/80 mb-3 mobile-s:h-6 mobile-s:w-[1px] mobile-m:mb-4"></div>
+          <div className="h-8 mobile-m:h-12 w-[1.5px] bg-[#c5b37f] shadow-[1px_1px_0px_rgba(255,255,255,0.8),-0.5px_-0.5px_0px_rgba(0,0,0,0.2)] mb-3 mobile-s:h-6 mobile-s:w-[1px] mobile-m:mb-4"></div>
 
           {/* Nombre */}
           <h2 className="font-script text-3xl mobile-s:text-2xl mobile-s:mb-2 mobile-m:text-4xl md:text-5xl lg:text-7xl text-gold-engraved mb-6 mobile-m:mb-10 drop-shadow-sm leading-tight px-2">
