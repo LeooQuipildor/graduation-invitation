@@ -1,5 +1,11 @@
 import { motion } from "framer-motion";
 import { MapPin, Clock } from "lucide-react";
+import {
+  Map,
+  MapMarker,
+  MarkerContent,
+  MapControls,
+} from "@/components/ui/map";
 
 const LocationSection = () => {
   return (
@@ -62,18 +68,30 @@ const LocationSection = () => {
               <span>A PARTIR DE 19:00 HS</span>
             </div>
 
-            {/* Imagen del Mapa (Placeholder o iFrame) */}
-            <div className="w-full h-40 mobile-m:h-48 bg-gray-100 mb-4 mobile-m:mb-6 rounded-sm overflow-hidden border border-gray-200 grayscale opacity-80 hover:grayscale-0 transition-all duration-500">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.016887889451!2d-58.38157048477038!3d-34.60373888045938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4aa9f0a6da5edb:0x11bead4e234e558b!2sObelisco!5e0!3m2!1ses!2sar!4v1676922379532!5m2!1ses!2sar"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Mapa Ubicación"
-              ></iframe>
+            {/* Mapa Interactivo */}
+            <div className="w-full h-40 mobile-m:h-48 bg-gray-100 mb-4 mobile-m:mb-6  overflow-hidden border border-gray-200 shadow-inner relative">
+              <Map
+                center={[-58.38157, -34.60373]}
+                zoom={17}
+                theme="light"
+                className="w-full h-full"
+                mapStyle="https://basemaps.cartocdn.com/gl/positron-gl-style/style.json"
+              >
+                <MapControls
+                  position="top-right"
+                  showZoom={false}
+                  showCompass={false}
+                  showFullscreen={true}
+                />
+
+                <MapMarker longitude={-58.38157} latitude={-34.60373}>
+                  <MarkerContent>
+                    <div className="text-[#7f8c6c] drop-shadow-md">
+                      <MapPin size={32} fill="#7f8c6c" className="text-white" />
+                    </div>
+                  </MarkerContent>
+                </MapMarker>
+              </Map>
             </div>
 
             {/* Botón Abrir en Maps */}
