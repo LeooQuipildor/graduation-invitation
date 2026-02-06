@@ -90,7 +90,7 @@ const Countdown = ({ targetDate }) => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="font-script text-lg mobile-m:text-xl md:text-2xl text-gold-engraved mb-8 mobile-m:mb-12 leading-tight max-w-sm mobile-s:mb-1"
+          className="font-serif italic text-lg mobile-m:text-xl md:text-2xl text-gold-engraved mb-8 mobile-m:mb-12 leading-tight max-w-sm mobile-s:mb-1 mobile-s:text-sm"
         >
           Cada segundo nos acerca al final de una gran etapa y al comienzo de
           una nueva.

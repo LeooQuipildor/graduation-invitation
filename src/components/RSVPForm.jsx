@@ -104,7 +104,7 @@ const RSVPForm = () => {
   }
 
   return (
-    <section className="relative w-full min-h-svh py-20 px-4 flex flex-col items-center justify-center overflow-hidden">
+    <section className="relative w-full min-h-svh pt-0 pb-20 px-4 flex flex-col items-center justify-center overflow-hidden">
       {/* Fondo Texturizado */}
       <div className="absolute inset-0 z-0">
         <img
@@ -123,10 +123,10 @@ const RSVPForm = () => {
           viewport={{ once: true }}
           className="text-center mb-10"
         >
-          <h2 className="font-script text-5xl md:text-6xl text-gold-engraved mb-2 drop-shadow-sm">
+          <h2 className="font-script text-5xl md:text-6xl text-gold-engraved mb-2 drop-shadow-sm mobile-s:text-4xl">
             Confirma tu asistencia
           </h2>
-          <p className="font-serif text-gold-engraved text-lg md:text-xl italic max-w-2xl px-4">
+          <p className="font-serif text-gold-engraved text-lg md:text-xl italic max-w-2xl px-4 mobile-s:text-sm">
             Sería un honor contar con tu presencia en esta noche tan especial.
           </p>
         </motion.div>
@@ -137,9 +137,9 @@ const RSVPForm = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="bg-white w-full max-w-lg shadow-xl rounded-sm p-4"
+          className="bg-white w-full max-w-lg card-strong-shadow rounded-sm p-4"
         >
-          <div className="border border-gray-100 p-6 md:p-8">
+          <div className="border border-gray-400 p-6 md:p-8">
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Nombre */}
               <div>

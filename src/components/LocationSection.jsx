@@ -36,9 +36,9 @@ const LocationSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="bg-white w-full max-w-md p-1.5 shadow-xl rounded-sm"
+          className="bg-white w-full max-w-md p-1.5 card-strong-shadow rounded-sm"
         >
-          <div className="border border-gray-200 p-4 mobile-m:p-6 flex flex-col items-center text-center">
+          <div className="border border-gray-400 p-4 mobile-m:p-6 flex flex-col items-center text-center">
             {/* Icono Principal */}
             <div className="text-[#8B7E60] mb-3 mobile-m:mb-4">
               <MapPin
