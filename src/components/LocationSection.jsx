@@ -25,7 +25,7 @@ const LocationSection = () => {
           <h2 className="font-script text-4xl mobile-m:text-5xl md:text-6xl text-gold-engraved mb-1 drop-shadow-sm">
             Donde celebramos
           </h2>
-          <p className="font-serif text-gold-engraved text-sm mobile-m:text-lg md:text-xl italic max-w-md mx-auto leading-tight">
+          <p className="font-serif text-gray-500 text-sm mobile-m:text-lg md:text-xl italic max-w-md mx-auto leading-tight">
             El lugar donde celebramos que el esfuerzo valió la pena.
           </p>
         </motion.div>
@@ -40,7 +40,7 @@ const LocationSection = () => {
         >
           <div className="border border-gray-400 p-4 mobile-m:p-6 flex flex-col items-center text-center">
             {/* Icono Principal */}
-            <div className="text-[#8B7E60] mb-3 mobile-m:mb-4">
+            <div className="text-[#7f8c6c] mb-3 mobile-m:mb-4">
               <MapPin
                 size={40}
                 strokeWidth={1.5}
@@ -49,7 +49,7 @@ const LocationSection = () => {
             </div>
 
             {/* Nombre del Salón y Dirección */}
-            <h3 className="font-serif text-xl mobile-m:text-2xl text-[#8B7E60] uppercase tracking-widest mb-1">
+            <h3 className="font-serif text-xl mobile-m:text-2xl text-gold-engraved uppercase tracking-widest mb-1">
               Salon "Nombre"
             </h3>
             <p className="font-serif text-[10px] mobile-m:text-xs text-gray-500 uppercase tracking-wider mb-4 max-w-xs">
@@ -57,7 +57,7 @@ const LocationSection = () => {
             </p>
 
             {/* Horario */}
-            <div className="flex items-center gap-2 text-gray-600 mb-4 font-serif text-xs mobile-m:text-sm">
+            <div className="flex items-center gap-2 text-gold-engraved mb-4 font-serif text-xs mobile-m:text-sm">
               <Clock size={16} />
               <span>A PARTIR DE 19:00 HS</span>
             </div>
@@ -81,7 +81,7 @@ const LocationSection = () => {
               href="https://goo.gl/maps/xyz"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#7A8B7A] text-white font-serif font-bold text-xs mobile-m:text-sm px-10 py-3 hover:bg-[#697a69] transition-colors uppercase tracking-[0.2em] shadow-md rounded-none"
+              className="bg-[#7f8c6c] text-white font-serif font-bold text-xs mobile-m:text-sm px-10 py-3 hover:bg-[#6c7a5a] transition-colors uppercase tracking-[0.2em] shadow-md rounded-none"
             >
               Abrir en Maps
             </a>

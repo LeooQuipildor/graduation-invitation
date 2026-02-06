@@ -126,7 +126,7 @@ const RSVPForm = () => {
           <h2 className="font-script text-5xl md:text-6xl text-gold-engraved mb-2 drop-shadow-sm mobile-s:text-4xl">
             Confirma tu asistencia
           </h2>
-          <p className="font-serif text-gold-engraved text-lg md:text-xl italic max-w-2xl px-4 mobile-s:text-sm">
+          <p className="font-serif text-gray-500 text-lg md:text-xl italic max-w-2xl px-4 mobile-s:text-sm">
             Sería un honor contar con tu presencia en esta noche tan especial.
           </p>
         </motion.div>
@@ -265,7 +265,7 @@ const RSVPForm = () => {
               <div className="pt-4">
                 <button
                   type="submit"
-                  className="bg-[#7A8B7A] text-white font-serif font-bold text-sm px-12 py-3 hover:bg-[#697a69] transition-colors uppercase tracking-[0.2em] shadow-md rounded-none"
+                  className="bg-[#7f8c6c] text-white font-serif font-bold text-sm px-12 py-3 hover:bg-[#6c7a5a] transition-colors uppercase tracking-[0.2em] shadow-md rounded-none"
                 >
                   Enviar
                 </button>

@@ -1,5 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useLayoutEffect } from "react";
 import { motion } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Countdown = ({ targetDate }) => {
   const [timeLeft, setTimeLeft] = useState({
@@ -8,6 +12,38 @@ const Countdown = ({ targetDate }) => {
     minutes: 0,
     seconds: 0,
   });
+
+  const cardsRef = useRef([]);
+  const containerRef = useRef(null);
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      // Solo animación de entrada (Carga al hacer scroll)
+      gsap.fromTo(
+        cardsRef.current,
+        {
+          y: 50,
+          opacity: 0,
+          scale: 0.8,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: "back.out(1.7)",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+        },
+      );
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
 
   useEffect(() => {
     const calculateTimeLeft = () => {
@@ -90,22 +126,22 @@ const Countdown = ({ targetDate }) => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="font-serif italic text-lg mobile-m:text-xl md:text-2xl text-gold-engraved mb-8 mobile-m:mb-12 leading-tight max-w-sm mobile-s:mb-1 mobile-s:text-sm"
+          className="font-serif italic text-lg mobile-m:text-xl md:text-2xl text-gray-500 mb-8 mobile-m:mb-12 leading-tight max-w-sm mobile-s:mb-1 mobile-s:text-sm"
         >
           Cada segundo nos acerca al final de una gran etapa y al comienzo de
           una nueva.
         </motion.p>
 
-        {/* Cajas del Contador */}
-        <div className="grid grid-cols-2 gap-4 w-full mobile-s:mb-10">
+        {/* Cajas del Contador - Animadas con GSAP */}
+        <div
+          ref={containerRef}
+          className="grid grid-cols-2 gap-4 w-full mobile-s:mb-10"
+        >
           {timeUnits.map((item, index) => (
-            <motion.div
+            <div
               key={item.label}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 + 0.3 }}
-              className="relative flex flex-col items-center justify-center aspect-[5/4]"
+              ref={(el) => (cardsRef.current[index] = el)}
+              className="relative flex flex-col items-center justify-center aspect-[5/4] opacity-0" // opacity-0 inicial para evitar parpadeo antes de animar
             >
               {/* Imagen de fondo de la minicard */}
               <div className="absolute inset-0 z-0 flex items-center justify-center">
@@ -128,7 +164,7 @@ const Countdown = ({ targetDate }) => {
                   {String(item.value || 0).padStart(2, "0")}
                 </span>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
