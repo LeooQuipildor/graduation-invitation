@@ -1,10 +1,23 @@
+import { useState, useEffect } from "react";
 import HeroSection from "./components/HeroSection";
 import Countdown from "./components/Countdown";
 import LocationSection from "./components/LocationSection";
 import RSVPForm from "./components/RSVPForm";
 import Footer from "./components/Footer";
+import EnvelopeIntro from "./components/EnvelopeIntro";
 
 function App() {
+  const [showIntro, setShowIntro] = useState(true);
+
+  // Bloquear scroll al inicio
+  useEffect(() => {
+    if (showIntro) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [showIntro]);
+
   // Configuración del evento - Personaliza estos valores
   const eventConfig = {
     // Fecha del evento (formato: YYYY-MM-DD HH:MM:SS)
@@ -22,7 +35,12 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      {/* Animación de Sobre Intro */}
+      {showIntro && (
+        <EnvelopeIntro onOpenComplete={() => setShowIntro(false)} />
+      )}
+
       {/* Hero Section */}
       <HeroSection />
 
