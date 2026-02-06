@@ -5,7 +5,7 @@ const Footer = ({ initials = "CP" }) => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="py-12 px-4 bg-gradient-to-br from-primary-900 to-pink-900 text-white relative overflow-hidden">
+    <footer className="py-12 px-4 bg-[#7f8c6c] text-white relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute inset-0 opacity-10">
         <div
@@ -25,28 +25,30 @@ const Footer = ({ initials = "CP" }) => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          {/* Initials in elegant circle */}
+          {/* Sello Image instead of Initials */}
           <motion.div
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-            className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center shadow-2xl"
+            className="w-24 h-24 mx-auto mb-0 flex items-center justify-center filter drop-shadow-xl"
           >
-            <span className="font-serif text-3xl font-bold text-white">
-              {initials}
-            </span>
+            <img
+              src="/images/sello.png"
+              alt="Sello"
+              className="w-full h-full object-contain"
+            />
           </motion.div>
 
-          {/* Message */}
+          {/* New Funny Quote */}
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="text-lg md:text-xl font-light mb-4 text-white/90"
+            className="font-serif text-lg md:text-xl font-medium mb-2 text-white italic max-w-lg mx-auto"
           >
-            Gracias por ser parte de este momento especial
+            "Prometo declarar impuestos... pero primero celebro mi grado"
           </motion.p>
 
           {/* Divider */}
@@ -54,33 +56,36 @@ const Footer = ({ initials = "CP" }) => {
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="w-24 h-0.5 bg-white/30 mx-auto my-6"
+            transition={{ delay: 0.5, duration: 0.8 }}
+            className="w-16 h-0.5 bg-white/40 mx-auto my-4"
           ></motion.div>
 
-          {/* Made with love */}
+          {/* Gratitude & Signature */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.6, duration: 0.6 }}
+            className="text-base md:text-lg font-light mb-8 text-white/90 font-serif"
+          >
+            <p className="mb-2">
+              Gracias por ser parte de este momento especial.
+            </p>
+            <p className="font-script text-2xl mt-4">
+              Atte. Emilia Rosa Guzman Julio
+            </p>
+          </motion.div>
+
+          {/* Developer Credit */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.8, duration: 0.6 }}
-            className="flex items-center justify-center gap-2 text-sm text-white/70"
+            className="text-xs text-white/60 font-sans tracking-wider uppercase border-t border-white/20 pt-6 mt-6"
           >
-            <span>Hecho con</span>
-            <Heart className="w-4 h-4 fill-red-400 text-red-400 animate-pulse" />
-            <span>• {currentYear}</span>
+            Diseñado y desarrollado por: Leandro Quipildor
           </motion.div>
-
-          {/* Quote */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 1, duration: 0.6 }}
-            className="mt-6 text-sm italic text-white/60 max-w-md mx-auto"
-          >
-            "El éxito es la suma de pequeños esfuerzos repetidos día tras día"
-          </motion.p>
         </motion.div>
       </div>
     </footer>
