@@ -105,14 +105,29 @@ const Countdown = ({ targetDate }) => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 + 0.3 }}
-              className="bg-[#b0aca2]/80 backdrop-blur-sm rounded-lg p-3 mobile-m:p-5 flex flex-col items-center justify-center shadow-lg aspect-[4/3]"
+              className="relative flex flex-col items-center justify-center aspect-[5/4]"
             >
-              <span className="font-serif text-3xl mobile-m:text-4xl md:text-5xl text-white font-bold mb-1 drop-shadow-md">
-                {String(item.value || 0).padStart(2, "0")}
-              </span>
-              <span className="font-serif text-xs mobile-m:text-sm md:text-base text-white uppercase tracking-widest font-medium drop-shadow-md">
-                {item.label}
-              </span>
+              {/* Imagen de fondo de la minicard */}
+              <div className="absolute inset-0 z-0 flex items-center justify-center">
+                <img
+                  src="/images/minicards.png"
+                  alt="Fondo tarjeta"
+                  className="w-[110%] h-[110%] object-contain"
+                  style={{
+                    filter: "drop-shadow(5px 5px 2px rgba(0,0,0,0.5))",
+                  }}
+                />
+              </div>
+
+              {/* Contenido (Texto) encima de la imagen */}
+              <div className="relative z-10 flex flex-col items-center -mt-2 mobile-m:-mt-4">
+                <span className="font-sans text-[9px] mobile-m:text-[10px] md:text-xs text-white uppercase tracking-[0.2em] font-medium opacity-90">
+                  {item.label}
+                </span>
+                <span className="font-serif text-3xl mobile-m:text-4xl md:text-5xl text-white font-normal mb-8 drop-shadow-sm">
+                  {String(item.value || 0).padStart(2, "0")}
+                </span>
+              </div>
             </motion.div>
           ))}
         </div>
