@@ -6,7 +6,8 @@ const RSVPForm = () => {
   const [formData, setFormData] = useState({
     name: "",
     attending: "",
-    guests: "1",
+    guests: "0",
+    guestNames: {},
     dietary: "",
     song: "",
   });
@@ -16,14 +17,43 @@ const RSVPForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+
+    setFormData((prev) => {
+      let updatedGuestNames = prev.guestNames;
+
+      // Si se reduce el número de invitados, limpiar los nombres sobrantes
+      if (name === "guests") {
+        const count = parseInt(value, 10);
+        const newNames = {};
+        for (let i = 0; i < count; i++) {
+          if (prev.guestNames[i]) {
+            newNames[i] = prev.guestNames[i];
+          }
+        }
+        updatedGuestNames = newNames;
+      }
+
+      return {
+        ...prev,
+        [name]: value,
+        guestNames: name === "guests" ? updatedGuestNames : prev.guestNames,
+      };
+    });
+
     // Clear error when user starts typing
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: "" }));
     }
+  };
+
+  const handleGuestNameChange = (index, value) => {
+    setFormData((prev) => ({
+      ...prev,
+      guestNames: {
+        ...prev.guestNames,
+        [index]: value,
+      },
+    }));
   };
 
   const validate = () => {
@@ -222,17 +252,40 @@ const RSVPForm = () => {
                 >
                   <div>
                     <label className="block font-serif text-[#8B7E60] uppercase tracking-widest text-sm mb-2">
-                      Numero de acompañantes
+                      Numero de acompañantes (Máx 4)
                     </label>
-                    <select // Cambiado a select simple o input pequeño según diseño (imagen muestra input "0")
+                    <select
                       name="guests"
                       value={formData.guests}
                       onChange={handleChange}
-                      className="w-20 bg-[#E8E6E1] border-none px-3 py-2 font-serif text-gray-700 focus:ring-1 focus:ring-[#8B7E60] outline-none"
+                      className="w-full bg-[#E8E6E1] border-none rounded-md px-3 py-2 font-serif text-gray-700 focus:ring-1 focus:ring-[#8B7E60] outline-none mb-3"
                     >
+                      <option value="0">0</option>
                       <option value="1">1</option>
                       <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
                     </select>
+
+                    {/* Inputs dinámicos para nombres de acompañantes */}
+                    {parseInt(formData.guests) > 0 && (
+                      <div className="space-y-3 pl-4 border-l-2 border-[#8B7E60]/30">
+                        {Array.from({ length: parseInt(formData.guests) }).map(
+                          (_, index) => (
+                            <input
+                              key={index}
+                              type="text"
+                              placeholder={`Nombre Acompañante ${index + 1}`}
+                              value={formData.guestNames[index] || ""}
+                              onChange={(e) =>
+                                handleGuestNameChange(index, e.target.value)
+                              }
+                              className="w-full bg-[#E8E6E1] border-none rounded-md px-4 py-2 font-serif text-gray-700 placeholder-gray-400 focus:ring-1 focus:ring-[#8B7E60] outline-none text-sm"
+                            />
+                          ),
+                        )}
+                      </div>
+                    )}
                   </div>
 
                   <div>
