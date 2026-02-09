@@ -31,7 +31,7 @@ const LocationSection = () => {
           <h2 className="font-script text-4xl mobile-m:text-5xl md:text-6xl text-gold-engraved mb-1 drop-shadow-sm">
             Donde celebramos
           </h2>
-          <p className="font-serif text-gray-500 text-sm mobile-m:text-lg md:text-xl italic max-w-md mx-auto leading-tight">
+          <p className="font-serif text-gray-500 text-sm mobile-m:text-xl md:text-xl italic max-w-md mx-auto leading-tight">
             El lugar donde celebramos que el esfuerzo valió la pena.
           </p>
         </motion.div>
@@ -50,20 +50,20 @@ const LocationSection = () => {
               <MapPin
                 size={40}
                 strokeWidth={1.5}
-                className="mobile-m:w-12 mobile-m:h-12"
+                className="mobile-m:w-20 mobile-m:h-20"
               />
             </div>
 
             {/* Nombre del Salón y Dirección */}
-            <h3 className="font-serif text-xl mobile-m:text-2xl text-gold-engraved uppercase tracking-widest mb-1">
+            <h3 className="font-serif text-xl mobile-m:text-3xl text-gold-engraved uppercase tracking-widest mb-1">
               Salon "Nombre"
             </h3>
-            <p className="font-serif text-[10px] mobile-m:text-xs text-gray-500 uppercase tracking-wider mb-4 max-w-xs">
+            <p className="font-serif text-[10px] mobile-m:text-lg text-gray-500 uppercase tracking-wider mb-4 max-w-xs">
               El lugar donde celebramos que el esfuerzo valió la pena.
             </p>
 
             {/* Horario */}
-            <div className="flex items-center gap-2 text-gold-engraved mb-4 font-serif text-xs mobile-m:text-sm">
+            <div className="flex items-center gap-2 text-gold-engraved mb-4 font-serif text-xs mobile-m:text-lg">
               <Clock size={16} />
               <span>A PARTIR DE 19:00 HS</span>
             </div>
