@@ -14,7 +14,7 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-white/30"></div>
       </div>
 
-      <div className="w-full max-w-4xl mx-auto text-center relative z-10 px-4">
+      <div className="w-full max-w-4xl mx-auto text-center relative z-10 px-5">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -22,13 +22,13 @@ const HeroSection = () => {
           className="flex flex-col items-center w-full"
         >
           {/* Texto de Invitación */}
-          <p className="font-serif text-[#1e1e1e] text-xs mobile-s:mt-28 mobile-m:text-sm md:text-base leading-relaxed tracking-wide mb-2 mobile-m:mb-4 uppercase font-medium">
+          <p className="font-serif text-[#1e1e1e] text-xs mobile-s:mt-28 mobile-m:text-sm md:text-base leading-relaxed tracking-wide mb-2 mobile-m:mb-4 uppercase font-medium mobile-s:px-3">
             Acompáñame a celebrar que oficialmente soy contadora pública
           </p>
 
           {/* Título Profesional */}
           {/* Título Profesional */}
-          <h1 className="font-script text-4xl mobile-s:text-3xl mobile-m:text-5xl md:text-6xl lg:text-8xl text-gold-engraved mb-3 mobile-m:mb-4 drop-shadow-sm leading-tight">
+          <h1 className="font-script text-4xl mobile-s:text-3xl mobile-m:text-4xl md:text-6xl lg:text-8xl text-gold-engraved mb-3 mobile-m:mb-4 drop-shadow-sm leading-tight">
             Contadora Publica
           </h1>
 
@@ -36,7 +36,7 @@ const HeroSection = () => {
           <div className="h-8 mobile-m:h-12 w-[1.5px] bg-[#c5b37f] shadow-[1px_1px_0px_rgba(255,255,255,0.8),-0.5px_-0.5px_0px_rgba(0,0,0,0.2)] mb-3 mobile-s:h-6 mobile-s:w-[1px] mobile-m:mb-4"></div>
 
           {/* Nombre */}
-          <h2 className="font-script text-3xl mobile-s:text-2xl mobile-s:mb-2 mobile-m:text-4xl md:text-5xl lg:text-7xl text-gold-engraved mb-6 mobile-m:mb-10 drop-shadow-sm leading-tight px-2">
+          <h2 className="font-script text-3xl mobile-s:text-2xl mobile-s:mb-2 mobile-m:text-3xl md:text-5xl lg:text-7xl text-gold-engraved mb-6 mobile-m:mb-10 drop-shadow-sm leading-tight px-2">
             Emilia Rosa Guzman Julio
           </h2>
 

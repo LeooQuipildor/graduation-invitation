@@ -82,7 +82,7 @@ const Footer = ({ initials = "CP" }) => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.8, duration: 0.6 }}
-            className="text-[8px] text-white/60 font-sans tracking-wider uppercase border-t border-white/20 pt-6 mt-6"
+            className="text-[8px] text-white/60 font-sans tracking-wider uppercase border-t border-white/20 pt-6 mt-6 mobile-m:text-[11px]"
           >
             Diseñado y desarrollado por: Leandro Quipildor
           </motion.div>

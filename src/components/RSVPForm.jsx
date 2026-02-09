@@ -153,10 +153,10 @@ const RSVPForm = () => {
           viewport={{ once: true }}
           className="text-center mb-10"
         >
-          <h2 className="font-script text-5xl md:text-6xl text-gold-engraved mb-2 drop-shadow-sm mobile-s:text-4xl">
-            Confirma tu asistencia
+          <h2 className="font-script text-5xl md:text-6xl text-gold-engraved mb-2 drop-shadow-sm mobile-s:text-4xl mobile-m:text-5xl">
+            Confirma asistencia
           </h2>
-          <p className="font-serif text-gray-500 text-lg md:text-xl italic max-w-2xl px-4 mobile-s:text-sm">
+          <p className="font-serif text-gray-500 text-lg md:text-xl italic max-w-2xl px-4 mobile-s:text-sm mobile-m:text-lg">
             Sería un honor contar con tu presencia en esta noche tan especial.
           </p>
         </motion.div>
