@@ -5,7 +5,7 @@ const Footer = ({ initials = "CP" }) => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="py-12 px-4 bg-[#7f8c6c] text-white relative overflow-hidden">
+    <footer className="pb-4 pt-12 px-4 bg-[#7f8c6c] text-white relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute inset-0 opacity-10">
         <div
@@ -82,7 +82,7 @@ const Footer = ({ initials = "CP" }) => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.8, duration: 0.6 }}
-            className="text-xs text-white/60 font-sans tracking-wider uppercase border-t border-white/20 pt-6 mt-6"
+            className="text-[8px] text-white/60 font-sans tracking-wider uppercase border-t border-white/20 pt-6 mt-6"
           >
             Diseñado y desarrollado por: Leandro Quipildor
           </motion.div>
