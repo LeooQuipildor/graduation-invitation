@@ -104,7 +104,7 @@ const RSVPForm = () => {
   if (isSubmitted) {
     return (
       <section className="relative w-full py-20 px-4 flex flex-col items-center justify-center overflow-hidden min-h-[60vh]">
-        {/* Fondo Texturizado */}
+        {/* Fondo Texturizado - SIN CAMBIOS */}
         <div className="absolute inset-0 z-0">
           <img
             src="/images/background-countdown.jpg"
@@ -118,12 +118,12 @@ const RSVPForm = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="bg-white p-12 text-center shadow-xl rounded-sm border border-gray-100"
+            className="bg-white p-12 text-center shadow-xl rounded-sm border border-gray-100 tablet:p-16"
           >
-            <h3 className="font-script text-4xl text-[#5a6c5a] mb-4">
+            <h3 className="font-script text-4xl text-[#5a6c5a] mb-4 tablet:text-5xl">
               ¡Confirmación Recibida!
             </h3>
-            <p className="font-serif text-gray-600 text-lg">
+            <p className="font-serif text-gray-600 text-lg tablet:text-xl">
               Gracias por confirmar tu asistencia. <br />
               ¡Nos vemos en la celebración!
             </p>
@@ -135,7 +135,7 @@ const RSVPForm = () => {
 
   return (
     <section className="relative w-full min-h-svh pt-0 pb-20 px-4 flex flex-col items-center justify-center overflow-hidden">
-      {/* Fondo Texturizado */}
+      {/* Fondo Texturizado - SIN CAMBIOS */}
       <div className="absolute inset-0 z-0">
         <img
           src="/images/background-countdown.jpg"
@@ -151,12 +151,12 @@ const RSVPForm = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-10"
+          className="text-center mb-10 tablet:mb-16"
         >
-          <h2 className="font-script text-5xl md:text-6xl text-gold-engraved mb-2 drop-shadow-sm mobile-s:text-4xl mobile-m:text-5xl mobile-l:text-5xl">
+          <h2 className="font-script text-5xl md:text-6xl text-gold-engraved mb-2 drop-shadow-sm mobile-s:text-4xl mobile-m:text-5xl mobile-l:text-5xl tablet:text-7xl">
             Confirma asistencia
           </h2>
-          <p className="font-serif text-gray-500 text-lg md:text-xl italic max-w-2xl px-4 mobile-s:text-sm mobile-m:text-xl mobile-l:text-xl mobile-m:px-0 mobile-l:px-0">
+          <p className="font-serif text-gray-500 text-lg md:text-xl italic max-w-2xl px-4 mobile-s:text-sm mobile-m:text-xl mobile-l:text-xl tablet:text-2xl mobile-m:px-0 mobile-l:px-0 tablet:px-8">
             Sería un honor contar con tu presencia en esta noche tan especial.
           </p>
         </motion.div>
@@ -167,22 +167,25 @@ const RSVPForm = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="bg-white w-full max-w-lg card-strong-shadow rounded-sm p-4"
+          className="bg-white w-full max-w-lg card-strong-shadow rounded-sm p-4 tablet:max-w-xl"
         >
-          <div className="border border-gray-400 p-6 md:p-8">
+          <div className="border border-gray-400 p-6 md:p-8 tablet:p-12">
             {/* Icono Decorativo */}
-            <div className="text-[#7f8c6c] mb-6 flex justify-center">
+            <div className="text-[#7f8c6c] mb-6 flex justify-center tablet:mb-10">
               <Mail
                 size={40}
                 strokeWidth={1.5}
-                className="mobile-m:w-20 mobile-m:h-20 mobile-l:w-20 mobile-l:h-20"
+                className="mobile-m:w-20 mobile-m:h-20 mobile-l:w-20 mobile-l:h-20 tablet:w-24 tablet:h-24"
               />
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-6 tablet:space-y-10"
+            >
               {/* Nombre */}
               <div>
-                <label className="block font-serif text-[#8B7E60] uppercase tracking-widest text-sm mb-2 mobile-m:text-lg mobile-l:text-lg">
+                <label className="block font-serif text-[#8B7E60] uppercase tracking-widest text-sm mb-2 mobile-m:text-lg mobile-l:text-lg tablet:text-xl tablet:mb-3">
                   Nombre Completo
                 </label>
                 <input
@@ -190,24 +193,22 @@ const RSVPForm = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full bg-[#E8E6E1] border-none  px-4 py-2 font-serif text-gray-700 placeholder-gray-400 focus:ring-1 focus:ring-[#8B7E60] outline-none transition-all"
+                  className="w-full bg-[#E8E6E1] border-none  px-4 py-2 font-serif text-gray-700 placeholder-gray-400 focus:ring-1 focus:ring-[#8B7E60] outline-none transition-all tablet:py-4 tablet:text-lg"
                   placeholder="Tu nombre"
                 />
                 {errors.name && (
-                  <p className="text-red-500 text-xs mt-1 font-serif italic">
+                  <p className="text-red-500 text-xs mt-1 font-serif italic tablet:text-sm">
                     {errors.name}
                   </p>
                 )}
               </div>
 
-              {/* Teléfono (Agregado para coincidir con diseño, aunque no estaba en estado original, lo mapearemos a algo o lo ignoramos visualmente si no es crítico, pero mejor agregarlo al estado si el usuario quiere réplica exacta. Asumiré mantener estado original por ahora pero cambiar diseño visual de Attending) */}
-
               {/* Asistencia */}
               <div>
-                <label className="block font-serif text-[#8B7E60] uppercase tracking-widest text-sm mb-3 mobile-m:text-lg mobile-l:text-lg">
+                <label className="block font-serif text-[#8B7E60] uppercase tracking-widest text-sm mb-3 mobile-m:text-lg mobile-l:text-lg tablet:text-xl tablet:mb-4">
                   ¿Asistirás al evento?
                 </label>
-                <div className="flex items-center gap-6">
+                <div className="flex items-center gap-6 tablet:gap-10">
                   <label className="flex items-center cursor-pointer gap-2">
                     <input
                       type="radio"
@@ -215,9 +216,9 @@ const RSVPForm = () => {
                       value="yes"
                       checked={formData.attending === "yes"}
                       onChange={handleChange}
-                      className="accent-[#5a6c5a] w-4 h-4 cursor-pointer"
+                      className="accent-[#5a6c5a] w-4 h-4 cursor-pointer tablet:w-6 tablet:h-6"
                     />
-                    <span className="font-serif text-gray-600 text-sm mobile-m:text-lg mobile-l:text-lg">
+                    <span className="font-serif text-gray-600 text-sm mobile-m:text-lg mobile-l:text-lg tablet:text-xl">
                       ¡Sí, claro!
                     </span>
                   </label>
@@ -229,36 +230,36 @@ const RSVPForm = () => {
                       value="no"
                       checked={formData.attending === "no"}
                       onChange={handleChange}
-                      className="accent-[#5a6c5a] w-4 h-4 cursor-pointer"
+                      className="accent-[#5a6c5a] w-4 h-4 cursor-pointer tablet:w-6 tablet:h-6"
                     />
-                    <span className="font-serif text-gray-600 text-sm mobile-m:text-lg mobile-l:text-lg">
+                    <span className="font-serif text-gray-600 text-sm mobile-m:text-lg mobile-l:text-lg tablet:text-xl">
                       No asistiré
                     </span>
                   </label>
                 </div>
                 {errors.attending && (
-                  <p className="text-red-500 text-xs mt-1 font-serif italic">
+                  <p className="text-red-500 text-xs mt-1 font-serif italic tablet:text-sm">
                     {errors.attending}
                   </p>
                 )}
               </div>
 
-              {/* Acompañantes y Dieta (Condicionales simplificados visualmente) */}
+              {/* Acompañantes y Dieta */}
               {formData.attending === "yes" && (
                 <motion.div
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: "auto" }}
-                  className="space-y-6"
+                  className="space-y-6 tablet:space-y-10"
                 >
                   <div>
-                    <label className="block font-serif text-[#8B7E60] uppercase tracking-widest text-sm mb-2 mobile-m:text-lg mobile-l:text-lg">
+                    <label className="block font-serif text-[#8B7E60] uppercase tracking-widest text-sm mb-2 mobile-m:text-lg mobile-l:text-lg tablet:text-xl tablet:mb-3">
                       Numero de acompañantes (Máx 4)
                     </label>
                     <select
                       name="guests"
                       value={formData.guests}
                       onChange={handleChange}
-                      className="w-full bg-[#E8E6E1] border-none rounded-md px-3 py-2 font-serif text-gray-700 focus:ring-1 focus:ring-[#8B7E60] outline-none mb-3"
+                      className="w-full bg-[#E8E6E1] border-none rounded-md px-3 py-2 font-serif text-gray-700 focus:ring-1 focus:ring-[#8B7E60] outline-none mb-3 tablet:py-4 tablet:text-lg"
                     >
                       <option value="0">0</option>
                       <option value="1">1</option>
@@ -267,9 +268,8 @@ const RSVPForm = () => {
                       <option value="4">4</option>
                     </select>
 
-                    {/* Inputs dinámicos para nombres de acompañantes */}
                     {parseInt(formData.guests) > 0 && (
-                      <div className="space-y-3 pl-4 border-l-2 border-[#8B7E60]/30">
+                      <div className="space-y-3 pl-4 border-l-2 border-[#8B7E60]/30 tablet:space-y-5">
                         {Array.from({ length: parseInt(formData.guests) }).map(
                           (_, index) => (
                             <input
@@ -280,7 +280,7 @@ const RSVPForm = () => {
                               onChange={(e) =>
                                 handleGuestNameChange(index, e.target.value)
                               }
-                              className="w-full bg-[#E8E6E1] border-none rounded-md px-4 py-2 font-serif text-gray-700 placeholder-gray-400 focus:ring-1 focus:ring-[#8B7E60] outline-none text-sm mobile-m:text-lg mobile-l:text-lg"
+                              className="w-full bg-[#E8E6E1] border-none rounded-md px-4 py-2 font-serif text-gray-700 placeholder-gray-400 focus:ring-1 focus:ring-[#8B7E60] outline-none text-sm mobile-m:text-lg mobile-l:text-lg tablet:text-xl tablet:py-4"
                             />
                           ),
                         )}
@@ -289,7 +289,7 @@ const RSVPForm = () => {
                   </div>
 
                   <div>
-                    <label className="block font-serif text-[#8B7E60] uppercase tracking-widest text-sm mb-2 mobile-m:text-lg mobile-l:text-lg">
+                    <label className="block font-serif text-[#8B7E60] uppercase tracking-widest text-sm mb-2 mobile-m:text-lg mobile-l:text-lg tablet:text-xl tablet:mb-3">
                       Restricciones alimenticias
                     </label>
                     <input
@@ -298,12 +298,12 @@ const RSVPForm = () => {
                       value={formData.dietary}
                       onChange={handleChange}
                       placeholder="Opcional"
-                      className="w-full bg-[#E8E6E1] border-none px-4 py-2 font-serif text-gray-700 placeholder-gray-400 focus:ring-1 focus:ring-[#8B7E60] outline-none"
+                      className="w-full bg-[#E8E6E1] border-none px-4 py-2 font-serif text-gray-700 placeholder-gray-400 focus:ring-1 focus:ring-[#8B7E60] outline-none tablet:py-4 tablet:text-lg"
                     />
                   </div>
 
                   <div>
-                    <label className="block font-serif text-[#8B7E60] uppercase tracking-widest text-sm mb-2 mobile-m:text-lg mobile-l:text-lg">
+                    <label className="block font-serif text-[#8B7E60] uppercase tracking-widest text-sm mb-2 mobile-m:text-lg mobile-l:text-lg tablet:text-xl tablet:mb-3">
                       ¿Qué canción no puede faltar en la fiesta?
                     </label>
                     <input
@@ -312,10 +312,10 @@ const RSVPForm = () => {
                       value={formData.song}
                       onChange={handleChange}
                       placeholder="Canción"
-                      className="w-full bg-[#E8E6E1] border-none px-4 py-2 font-serif text-gray-700 placeholder-gray-400 focus:ring-1 focus:ring-[#8B7E60] outline-none"
+                      className="w-full bg-[#E8E6E1] border-none px-4 py-2 font-serif text-gray-700 placeholder-gray-400 focus:ring-1 focus:ring-[#8B7E60] outline-none tablet:py-4 tablet:text-lg"
                     />
                     {errors.song && (
-                      <p className="text-red-500 text-xs mt-1 font-serif italic">
+                      <p className="text-red-500 text-xs mt-1 font-serif italic tablet:text-sm">
                         {errors.song}
                       </p>
                     )}
@@ -324,10 +324,10 @@ const RSVPForm = () => {
               )}
 
               {/* Botón */}
-              <div className="pt-4 flex justify-center">
+              <div className="pt-4 flex justify-center tablet:pt-8">
                 <button
                   type="submit"
-                  className="bg-[#7f8c6c] text-white font-serif font-bold text-sm px-12 py-3 hover:bg-[#6c7a5a] transition-colors uppercase tracking-[0.2em] shadow-md rounded-none"
+                  className="bg-[#7f8c6c] text-white font-serif font-bold text-sm px-12 py-3 hover:bg-[#6c7a5a] transition-colors uppercase tracking-[0.2em] shadow-md rounded-none tablet:text-lg tablet:px-20 tablet:py-5"
                 >
                   Enviar
                 </button>
