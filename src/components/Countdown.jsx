@@ -81,7 +81,7 @@ const Countdown = ({ targetDate }) => {
       {/* 1. Fondo Full Screen - SIN CAMBIOS */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/images/background-countdown.jpg"
+          src="/images/background-countdown.webp"
           alt="Fondo Countdown"
           className="w-full h-full object-fill"
         />
@@ -93,7 +93,7 @@ const Countdown = ({ targetDate }) => {
       {/* Superior */}
       <div className="absolute top-0 w-full z-20 pointer-events-none flex justify-center">
         <img
-          src="/images/moños-countdown.png"
+          src="/images/moños-countdown.webp"
           alt="Moños Arriba"
           className="w-auto h-auto max-h-[30vh] object-contain"
         />
@@ -102,7 +102,7 @@ const Countdown = ({ targetDate }) => {
       {/* Inferior Invertido */}
       <div className="absolute bottom-0 w-full z-20 pointer-events-none flex justify-center">
         <img
-          src="/images/moños-countdown.png"
+          src="/images/moños-countdown.webp"
           alt="Moños Abajo"
           className="w-auto h-auto max-h-[30vh] object-contain rotate-180"
         />
@@ -146,7 +146,7 @@ const Countdown = ({ targetDate }) => {
               {/* Imagen de fondo de la minicard - SIN CAMBIOS */}
               <div className="absolute inset-0 z-0 flex items-center justify-center">
                 <img
-                  src="/images/minicards.png"
+                  src="/images/minicards.webp"
                   alt="Fondo tarjeta"
                   className="w-[110%] h-[110%] object-contain"
                   style={{

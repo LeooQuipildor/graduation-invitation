@@ -13,7 +13,7 @@ const LocationSection = () => {
       {/* Fondo Texturizado - SIN CAMBIOS */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/images/background-countdown.jpg"
+          src="/images/background-countdown.webp"
           alt="Fondo Textura"
           className="w-full h-full object-cover rotate-180"
         />

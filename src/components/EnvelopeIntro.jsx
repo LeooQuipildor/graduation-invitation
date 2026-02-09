@@ -24,7 +24,7 @@ const EnvelopeIntro = ({ onOpenComplete }) => {
     >
       {/* Imagen de Fondo */}
       <img
-        src="/images/img-cover.jpg"
+        src="/images/img-cover.webp"
         alt="Fondo Cover"
         className="absolute inset-0 w-full h-full object-cover"
       />
@@ -77,7 +77,7 @@ const EnvelopeIntro = ({ onOpenComplete }) => {
           }
         >
           <img
-            src="/images/arriba-img.png"
+            src="/images/arriba-img.webp"
             alt="Sobre Arriba"
             // Margen negativo MUY GRANDE para forzar solapamiento
             className="w-full object-contain -mb-[102%] pointer-events-none drop-shadow-xl"
@@ -99,7 +99,7 @@ const EnvelopeIntro = ({ onOpenComplete }) => {
           }
         >
           <img
-            src="/images/abajo-img.png"
+            src="/images/abajo-img.webp"
             alt="Sobre Abajo"
             className="w-full object-contain pointer-events-none"
             style={{ filter: "drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.5))" }}

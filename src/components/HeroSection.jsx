@@ -6,7 +6,7 @@ const HeroSection = () => {
       {/* Background Image - El diseño principal */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/images/hero-background.jpg"
+          src="/images/hero-background.webp"
           alt="Graduation Background"
           className="w-full h-full object-fill"
         />

@@ -34,7 +34,7 @@ const Footer = ({ initials = "CP" }) => {
             className="w-24 h-24 mx-auto mb-0 flex items-center justify-center filter drop-shadow-xl mobile-m:w-36 mobile-m:h-36 mobile-l:w-36 mobile-l:h-36 tablet:w-48 tablet:h-48"
           >
             <img
-              src="/images/sello.png"
+              src="/images/sello.webp"
               alt="Sello"
               className="w-full h-full object-contain"
             />
