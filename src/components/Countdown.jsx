@@ -115,7 +115,7 @@ const Countdown = ({ targetDate }) => {
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-script text-5xl mobile-m:text-6xl tablet:text-8xl text-gold-engraved mb-2 drop-shadow-sm"
+          className="font-script text-5xl mobile-m:text-6xl tablet:text-8xl lg:text-6xl text-gold-engraved mb-2 drop-shadow-sm"
         >
           Cuenta atras
         </motion.h2>
@@ -126,7 +126,7 @@ const Countdown = ({ targetDate }) => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="font-serif italic text-lg mobile-m:text-xl tablet:text-3xl tablet:pt-8 text-gray-500 mb-8 mobile-m:mb-12 tablet:mb-16 leading-tight max-w-sm mobile-s:mb-1 mobile-s:text-sm tablet:max-w-xl"
+          className="font-serif italic text-lg mobile-m:text-xl tablet:text-3xl lg:text-2xl tablet:pt-8 text-gray-500 mb-8 mobile-m:mb-12 tablet:mb-16 leading-tight max-w-sm mobile-s:mb-1 mobile-s:text-sm tablet:max-w-xl"
         >
           Cada segundo nos acerca al final de una gran etapa y al comienzo de
           una nueva.
@@ -157,10 +157,10 @@ const Countdown = ({ targetDate }) => {
 
               {/* Contenido (Texto) encima de la imagen */}
               <div className="relative z-10 flex flex-col items-center -mt-2 mobile-m:-mt-4">
-                <span className="font-sans text-[9px] mobile-m:text-[10px] tablet:text-sm text-white uppercase tracking-[0.2em] font-medium opacity-90">
+                <span className="font-sans text-[9px] mobile-m:text-[10px] tablet:text-sm lg:text-xs text-white uppercase tracking-[0.2em] font-medium opacity-90">
                   {item.label}
                 </span>
-                <span className="font-serif text-3xl mobile-m:text-4xl tablet:text-6xl text-white font-normal mb-8 drop-shadow-sm">
+                <span className="font-serif text-3xl mobile-m:text-4xl tablet:text-6xl lg:text-4xl text-white font-normal mb-8 drop-shadow-sm">
                   {String(item.value || 0).padStart(2, "0")}
                 </span>
               </div>

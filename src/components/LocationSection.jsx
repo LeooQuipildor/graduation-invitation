@@ -28,10 +28,10 @@ const LocationSection = () => {
           viewport={{ once: true }}
           className="text-center mb-6 mobile-m:mb-8 mobile-l:mb-8 tablet:mb-12"
         >
-          <h2 className="font-script text-4xl mobile-m:text-5xl mobile-l:text-5xl tablet:text-7xl text-gold-engraved mb-1 drop-shadow-sm">
+          <h2 className="font-script text-4xl mobile-m:text-5xl mobile-l:text-5xl tablet:text-7xl lg:text-5xl text-gold-engraved mb-1 drop-shadow-sm">
             Donde celebramos
           </h2>
-          <p className="font-serif text-gray-500 text-sm mobile-m:text-xl mobile-l:text-xl tablet:text-2xl italic max-w-md mx-auto leading-tight tablet:max-w-xl">
+          <p className="font-serif text-gray-500 text-sm mobile-m:text-xl mobile-l:text-xl tablet:text-2xl lg:text-xl italic max-w-md mx-auto leading-tight tablet:max-w-xl">
             El lugar donde celebramos que el esfuerzo valió la pena.
           </p>
         </motion.div>
@@ -50,15 +50,15 @@ const LocationSection = () => {
               <MapPin
                 size={40}
                 strokeWidth={1.5}
-                className="mobile-m:w-20 mobile-m:h-20 mobile-l:w-20 mobile-l:h-20 tablet:w-24 tablet:h-24"
+                className="mobile-m:w-20 mobile-m:h-20 mobile-l:w-20 mobile-l:h-20 tablet:w-24 tablet:h-24 lg:w-20 lg:h-20"
               />
             </div>
 
             {/* Nombre del Salón y Dirección */}
-            <h3 className="font-serif text-xl mobile-m:text-3xl mobile-l:text-3xl tablet:text-4xl text-gold-engraved uppercase tracking-widest mb-1 tablet:mb-3">
+            <h3 className="font-serif text-xl mobile-m:text-3xl mobile-l:text-3xl tablet:text-4xl lg:text-3xl text-gold-engraved uppercase tracking-widest mb-1 tablet:mb-3">
               Salon "Nombre"
             </h3>
-            <p className="font-serif text-[10px] mobile-m:text-lg mobile-l:text-lg tablet:text-xl text-gray-500 uppercase tracking-wider mb-4 max-w-xs tablet:max-w-md tablet:mb-6">
+            <p className="font-serif text-[10px] mobile-m:text-lg mobile-l:text-lg tablet:text-xl lg:text-lg text-gray-500 uppercase tracking-wider mb-4 max-w-xs tablet:max-w-md tablet:mb-6">
               El lugar donde celebramos que el esfuerzo valió la pena.
             </p>
 
@@ -103,7 +103,7 @@ const LocationSection = () => {
               href="https://goo.gl/maps/xyz"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#7f8c6c] text-white font-serif font-bold text-xs mobile-m:text-sm mobile-l:text-sm tablet:text-lg tablet:px-16 tablet:py-4 px-10 py-3 hover:bg-[#6c7a5a] transition-colors uppercase tracking-[0.2em] shadow-md rounded-none"
+              className="bg-[#7f8c6c] text-white font-serif font-bold text-xs mobile-m:text-sm mobile-l:text-sm tablet:text-lg lg:text-base tablet:px-16 tablet:py-4 px-10 py-3 hover:bg-[#6c7a5a] transition-colors uppercase tracking-[0.2em] shadow-md rounded-none"
             >
               Abrir en Maps
             </a>

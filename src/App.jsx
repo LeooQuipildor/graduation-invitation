@@ -40,8 +40,8 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen w-full flex justify-center bg-[#e5e5e5]">
-      <div className="w-full max-w-[1023px] min-h-screen relative shadow-2xl bg-white overflow-hidden">
+    <div className="min-h-screen w-full flex justify-center bg-zinc-900">
+      <div className="w-full max-w-[640px] min-h-screen relative shadow-2xl bg-white overflow-hidden">
         {/* Animación de Sobre Intro */}
         {showIntro && (
           <EnvelopeIntro onOpenComplete={() => setShowIntro(false)} />
