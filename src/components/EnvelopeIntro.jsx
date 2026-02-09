@@ -8,7 +8,7 @@ const EnvelopeIntro = ({ onOpenComplete }) => {
     setIsOpen(true);
     setTimeout(() => {
       onOpenComplete();
-    }, 1200);
+    }, 3000);
   };
 
   return (
@@ -18,7 +18,7 @@ const EnvelopeIntro = ({ onOpenComplete }) => {
       initial={{ opacity: 1 }}
       animate={
         isOpen
-          ? { opacity: 0, transition: { delay: 0.8, duration: 0.5 } }
+          ? { opacity: 0, transition: { delay: 0.2, duration: 2.5 } }
           : { opacity: 1 }
       }
     >
@@ -32,7 +32,14 @@ const EnvelopeIntro = ({ onOpenComplete }) => {
       {/* Overlay opcional para oscurecer un poco si es necesario, o quitarlo si se quiere puro */}
       {/* <div className="absolute inset-0 bg-black/20" /> */}
 
-      <div className="relative w-full max-w-2xl px-4 flex flex-col items-center select-none z-10">
+      <motion.div
+        className="relative w-full max-w-2xl px-4 flex flex-col items-center select-none z-10"
+        initial={{ scale: 1, opacity: 1 }}
+        animate={
+          isOpen ? { scale: 60, opacity: 0 } : { scale: 1.5, opacity: 1 }
+        }
+        transition={{ duration: 4, delay: 0.1, ease: "easeInOut" }}
+      >
         {/* Texto de Instrucción */}
         {!isOpen && (
           <motion.div
@@ -54,7 +61,7 @@ const EnvelopeIntro = ({ onOpenComplete }) => {
               ? {
                   y: -150,
                   opacity: 0,
-                  transition: { duration: 1, ease: [0.22, 1, 0.36, 1] },
+                  transition: { duration: 3, ease: [0.22, 1, 0.36, 1] },
                 }
               : { y: 0 }
           }
@@ -76,7 +83,7 @@ const EnvelopeIntro = ({ onOpenComplete }) => {
               ? {
                   y: 150,
                   opacity: 0,
-                  transition: { duration: 1, ease: [0.22, 1, 0.36, 1] },
+                  transition: { duration: 3, ease: [0.22, 1, 0.36, 1] },
                 }
               : { y: 0 }
           }
@@ -88,7 +95,7 @@ const EnvelopeIntro = ({ onOpenComplete }) => {
             style={{ filter: "drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.5))" }}
           />
         </motion.div>
-      </div>
+      </motion.div>
     </motion.div>
   );
 };
