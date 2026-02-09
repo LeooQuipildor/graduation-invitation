@@ -71,7 +71,7 @@ const Footer = ({ initials = "CP" }) => {
             <p className="mb-2">
               Gracias por ser parte de este momento especial.
             </p>
-            <p className="font-script text-2xl mt-4 mobile-m:text-3xl mobile-l:text-3xl tablet:text-5xl lg:text-4xl">
+            <p className="font-script text-2xl mt-4 mobile-m:text-3xl mobile-l:text-3xl tablet:text-4xl lg:text-4xl">
               Atte. Emilia Rosa Guzman Julio
             </p>
           </motion.div>
