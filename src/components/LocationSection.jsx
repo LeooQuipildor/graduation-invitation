@@ -28,10 +28,10 @@ const LocationSection = () => {
           viewport={{ once: true }}
           className="text-center mb-6 mobile-m:mb-8 mobile-l:mb-8 tablet:mb-12"
         >
-          <h2 className="font-script text-4xl mobile-m:text-5xl mobile-l:text-5xl tablet:text-7xl md:text-6xl text-gold-engraved mb-1 drop-shadow-sm">
+          <h2 className="font-script text-4xl mobile-m:text-5xl mobile-l:text-5xl tablet:text-7xl text-gold-engraved mb-1 drop-shadow-sm">
             Donde celebramos
           </h2>
-          <p className="font-serif text-gray-500 text-sm mobile-m:text-xl mobile-l:text-xl tablet:text-2xl md:text-xl italic max-w-md mx-auto leading-tight tablet:max-w-xl">
+          <p className="font-serif text-gray-500 text-sm mobile-m:text-xl mobile-l:text-xl tablet:text-2xl italic max-w-md mx-auto leading-tight tablet:max-w-xl">
             El lugar donde celebramos que el esfuerzo valió la pena.
           </p>
         </motion.div>

@@ -46,7 +46,7 @@ const Footer = ({ initials = "CP" }) => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="font-serif text-lg md:text-xl font-medium mb-2 text-white italic max-w-lg mx-auto mobile-m:text-2xl mobile-l:text-2xl tablet:text-3xl tablet:mb-6 tablet:max-w-2xl"
+            className="font-serif text-lg font-medium mb-2 text-white italic max-w-lg mx-auto mobile-m:text-2xl mobile-l:text-2xl tablet:text-3xl tablet:mb-6 tablet:max-w-2xl"
           >
             "Prometo declarar impuestos... pero primero celebro mi grado"
           </motion.p>
@@ -66,7 +66,7 @@ const Footer = ({ initials = "CP" }) => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.6, duration: 0.6 }}
-            className="text-base md:text-lg font-light mb-8 text-white/90 font-serif mobile-m:text-2xl mobile-l:text-2xl tablet:text-3xl tablet:mb-12"
+            className="text-base font-light mb-8 text-white/90 font-serif mobile-m:text-2xl mobile-l:text-2xl tablet:text-3xl tablet:mb-12"
           >
             <p className="mb-2">
               Gracias por ser parte de este momento especial.

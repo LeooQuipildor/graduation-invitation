@@ -13,7 +13,7 @@ const EnvelopeIntro = ({ onOpenComplete }) => {
 
   return (
     <motion.div
-      className="fixed inset-0 z-[100] flex items-center justify-center cursor-pointer overflow-hidden"
+      className="fixed top-0 bottom-0 left-0 right-0 mx-auto w-full max-w-[1023px] z-[100] flex items-center justify-center cursor-pointer overflow-hidden"
       onClick={!isOpen ? handleOpen : undefined}
       initial={{ opacity: 1 }}
       animate={

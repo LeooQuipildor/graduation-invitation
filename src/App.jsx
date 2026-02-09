@@ -1,4 +1,4 @@
-import { useState, useEffect, useLayoutEffect } from "react";
+import { useState, useLayoutEffect } from "react";
 import HeroSection from "./components/HeroSection";
 import Countdown from "./components/Countdown";
 import LocationSection from "./components/LocationSection";
@@ -40,30 +40,32 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen relative">
-      {/* Animación de Sobre Intro */}
-      {showIntro && (
-        <EnvelopeIntro onOpenComplete={() => setShowIntro(false)} />
-      )}
+    <div className="min-h-screen w-full flex justify-center bg-[#e5e5e5]">
+      <div className="w-full max-w-[1023px] min-h-screen relative shadow-2xl bg-white overflow-hidden">
+        {/* Animación de Sobre Intro */}
+        {showIntro && (
+          <EnvelopeIntro onOpenComplete={() => setShowIntro(false)} />
+        )}
 
-      {/* Hero Section */}
-      <HeroSection />
+        {/* Hero Section */}
+        <HeroSection />
 
-      {/* Countdown Section */}
-      <Countdown targetDate={eventConfig.eventDate} />
+        {/* Countdown Section */}
+        <Countdown targetDate={eventConfig.eventDate} />
 
-      {/* Location Section */}
-      <LocationSection
-        locationName={eventConfig.location.name}
-        address={eventConfig.location.address}
-        mapsUrl={eventConfig.location.mapsUrl}
-      />
+        {/* Location Section */}
+        <LocationSection
+          locationName={eventConfig.location.name}
+          address={eventConfig.location.address}
+          mapsUrl={eventConfig.location.mapsUrl}
+        />
 
-      {/* RSVP Form */}
-      <RSVPForm />
+        {/* RSVP Form */}
+        <RSVPForm />
 
-      {/* Footer */}
-      <Footer initials={eventConfig.initials} />
+        {/* Footer */}
+        <Footer initials={eventConfig.initials} />
+      </div>
     </div>
   );
 }
