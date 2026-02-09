@@ -13,7 +13,7 @@ const EnvelopeIntro = ({ onOpenComplete }) => {
 
   return (
     <motion.div
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-[#7f8c6c] cursor-pointer"
+      className="fixed inset-0 z-[100] flex items-center justify-center cursor-pointer overflow-hidden"
       onClick={!isOpen ? handleOpen : undefined}
       initial={{ opacity: 1 }}
       animate={
@@ -22,7 +22,17 @@ const EnvelopeIntro = ({ onOpenComplete }) => {
           : { opacity: 1 }
       }
     >
-      <div className="relative w-full max-w-2xl px-4 flex flex-col items-center select-none">
+      {/* Imagen de Fondo */}
+      <img
+        src="/images/img-cover.jpg"
+        alt="Fondo Cover"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+
+      {/* Overlay opcional para oscurecer un poco si es necesario, o quitarlo si se quiere puro */}
+      {/* <div className="absolute inset-0 bg-black/20" /> */}
+
+      <div className="relative w-full max-w-2xl px-4 flex flex-col items-center select-none z-10">
         {/* Texto de Instrucción */}
         {!isOpen && (
           <motion.div
@@ -75,7 +85,7 @@ const EnvelopeIntro = ({ onOpenComplete }) => {
             src="/images/abajo-img.png"
             alt="Sobre Abajo"
             className="w-full object-contain pointer-events-none"
-            style={{ filter: "drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.5))" }}
+            style={{ filter: "drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.5))" }}
           />
         </motion.div>
       </div>
