@@ -8,7 +8,7 @@ const EnvelopeIntro = ({ onOpenComplete }) => {
     setIsOpen(true);
     setTimeout(() => {
       onOpenComplete();
-    }, 3000);
+    }, 2300);
   };
 
   return (
@@ -45,10 +45,20 @@ const EnvelopeIntro = ({ onOpenComplete }) => {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="absolute md:-top-20 -top-32 text-gold-engraved font-serif tracking-widest text-sm uppercase z-30"
+            transition={{ delay: 2, duration: 1 }}
+            className="absolute md:-top-20 -top-42 mt-3 text-gold-engraved font-serif tracking-widest text-xs uppercase z-30"
           >
-            Toca el sobre para abrir
+            <motion.span
+              animate={{ scale: [1, 1.1, 1], opacity: 1 }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="inline-block"
+            >
+              Toca el sobre para abrir
+            </motion.span>
           </motion.div>
         )}
 

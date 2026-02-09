@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import HeroSection from "./components/HeroSection";
 import Countdown from "./components/Countdown";
 import LocationSection from "./components/LocationSection";
@@ -9,9 +9,14 @@ import EnvelopeIntro from "./components/EnvelopeIntro";
 function App() {
   const [showIntro, setShowIntro] = useState(true);
 
-  // Bloquear scroll al inicio
-  useEffect(() => {
+  // Bloquear scroll y forzar inicio arriba al cargar
+  useLayoutEffect(() => {
     if (showIntro) {
+      // Evitar que el navegador restaure la posición de scroll anterior
+      if ("scrollRestoration" in history) {
+        history.scrollRestoration = "manual";
+      }
+      window.scrollTo(0, 0);
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
