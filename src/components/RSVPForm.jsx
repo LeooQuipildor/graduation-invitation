@@ -85,7 +85,7 @@ const RSVPForm = () => {
     }
 
     // Here you would typically send the data to a backend
-    console.log("Form submitted:", formData);
+    // console.log("Form submitted:", formData);
     setIsSubmitted(true);
 
     // Reset form after 3 seconds

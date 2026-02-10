@@ -26,7 +26,7 @@ function App() {
   // Configuración del evento - Personaliza estos valores
   const eventConfig = {
     // Fecha del evento (formato: YYYY-MM-DD HH:MM:SS)
-    eventDate: "2026-03-15 19:00:00",
+    eventDate: "2026-03-01 19:00:00",
 
     // Ubicación
     location: {
