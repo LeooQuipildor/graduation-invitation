@@ -11,12 +11,13 @@ function App() {
 
   // Bloquear scroll y forzar inicio arriba al cargar
   useLayoutEffect(() => {
+    // Forzar scroll arriba siempre al cargar la página
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
+    window.scrollTo(0, 0);
+
     if (showIntro) {
-      // Evitar que el navegador restaure la posición de scroll anterior
-      if ("scrollRestoration" in history) {
-        history.scrollRestoration = "manual";
-      }
-      window.scrollTo(0, 0);
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";

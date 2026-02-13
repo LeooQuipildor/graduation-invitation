@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useLayoutEffect } from "react";
 import { motion } from "framer-motion";
 import { CheckCircle, Mail } from "lucide-react";
 
@@ -12,9 +12,27 @@ const RSVPForm = () => {
     song: "",
   });
 
+  // Check local storage for previous submission on mount
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submittedData, setSubmittedData] = useState(null);
   const [isSending, setIsSending] = useState(false);
   const [errors, setErrors] = useState({});
+
+  useLayoutEffect(() => {
+    // Removed automatic loading from localStorage
+    /*
+    const savedSubmission = localStorage.getItem("rsvpSubmission");
+    if (savedSubmission) {
+      try {
+        const parsed = JSON.parse(savedSubmission);
+        setSubmittedData(parsed);
+        setIsSubmitted(true);
+      } catch (e) {
+        console.error("Error parsing saved submission", e);
+      }
+    }
+    */
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -55,6 +73,15 @@ const RSVPForm = () => {
         [index]: value,
       },
     }));
+
+    // Clear specific guest error
+    if (errors[`guestName_${index}`]) {
+      setErrors((prev) => {
+        const newErrors = { ...prev };
+        delete newErrors[`guestName_${index}`];
+        return newErrors;
+      });
+    }
   };
 
   const validate = () => {
@@ -68,8 +95,17 @@ const RSVPForm = () => {
       newErrors.attending = "Por favor indica si asistirás";
     }
 
-    if (formData.attending === "yes" && !formData.song.trim()) {
-      newErrors.song = "¡No olvides tu canción favorita!";
+    // Validar nombres de acompañantes si hay invitados seleccionados
+    if (formData.attending === "yes") {
+      const guestCount = parseInt(formData.guests);
+      if (guestCount > 0) {
+        for (let i = 0; i < guestCount; i++) {
+          if (!formData.guestNames[i] || !formData.guestNames[i].trim()) {
+            newErrors[`guestName_${i}`] =
+              `Ingresa el nombre del acompañante ${i + 1}`;
+          }
+        }
+      }
     }
 
     return newErrors;
@@ -123,18 +159,15 @@ const RSVPForm = () => {
     })
       .then(() => {
         setIsSubmitted(true);
-        // Reset form after 3 seconds
-        setTimeout(() => {
-          setIsSubmitted(false);
-          setFormData({
-            name: "",
-            attending: "",
-            guests: "1",
-            guestNames: {},
-            dietary: "",
-            song: "",
-          });
-        }, 3000);
+        // Save submission to state but NOT local storage
+        const submissionData = {
+          name: formData.name,
+          attending: formData.attending,
+        };
+        // localStorage.setItem("rsvpSubmission", JSON.stringify(submissionData)); // Removed persistence
+        setSubmittedData(submissionData);
+
+        // No reset form or timeout here, we want the message to stay UNTIL reload
       })
       .catch((error) => {
         console.error("Error!", error.message);
@@ -148,6 +181,9 @@ const RSVPForm = () => {
   };
 
   if (isSubmitted) {
+    const isAttending = submittedData?.attending === "yes";
+    const name = submittedData?.name?.split(" ")[0] || ""; // Get first name
+
     return (
       <section className="relative w-full py-20 px-4 flex flex-col items-center justify-center overflow-hidden min-h-[60vh]">
         {/* Fondo Texturizado - SIN CAMBIOS */}
@@ -166,13 +202,47 @@ const RSVPForm = () => {
             animate={{ opacity: 1, scale: 1 }}
             className="bg-white p-12 text-center shadow-xl rounded-sm border border-gray-100 tablet:p-16 lg:p-10"
           >
-            <h3 className="font-script text-4xl text-[#5a6c5a] mb-4 tablet:text-5xl">
-              ¡Confirmación Recibida!
-            </h3>
-            <p className="font-serif text-gray-600 text-lg tablet:text-xl">
-              Gracias por confirmar tu asistencia. <br />
-              ¡Nos vemos en la celebración!
-            </p>
+            {isAttending ? (
+              <>
+                <h3 className="font-script text-4xl text-[#5a6c5a] mb-4 tablet:text-5xl">
+                  ¡Gracias {name}!
+                </h3>
+                <p className="font-serif text-gray-600 text-lg tablet:text-xl">
+                  Tu asistencia ha sido confirmada. <br />
+                  ¡Te esperamos para celebrar!
+                </p>
+              </>
+            ) : (
+              <>
+                <h3 className="font-script text-3xl text-gray-500 mb-4 tablet:text-4xl">
+                  Gracias por avisar, {name}
+                </h3>
+                <p className="font-serif text-gray-600 text-lg tablet:text-xl">
+                  Entendemos que no puedas asistir. <br />
+                  ¡Te extrañaremos!
+                </p>
+              </>
+            )}
+
+            {/* Opción para enviar otra respuesta si fuera necesario (opcional) */}
+            <button
+              onClick={() => {
+                // localStorage.removeItem("rsvpSubmission"); // Not needed anymore
+                setIsSubmitted(false);
+                setSubmittedData(null);
+                setFormData({
+                  name: "",
+                  attending: "",
+                  guests: "1",
+                  guestNames: {},
+                  dietary: "",
+                  song: "",
+                });
+              }}
+              className="mt-8 text-xs text-gray-400 underline hover:text-gray-600"
+            >
+              Enviar otra respuesta
+            </button>
           </motion.div>
         </div>
       </section>
@@ -318,16 +388,22 @@ const RSVPForm = () => {
                       <div className="space-y-3 pl-4 border-l-2 border-[#8B7E60]/30 tablet:space-y-5 lg:space-y-3">
                         {Array.from({ length: parseInt(formData.guests) }).map(
                           (_, index) => (
-                            <input
-                              key={index}
-                              type="text"
-                              placeholder={`Nombre Acompañante ${index + 1}`}
-                              value={formData.guestNames[index] || ""}
-                              onChange={(e) =>
-                                handleGuestNameChange(index, e.target.value)
-                              }
-                              className="w-full bg-[#E8E6E1] border-none rounded-md px-4 py-2 font-serif text-gray-700 placeholder-gray-400 focus:ring-1 focus:ring-[#8B7E60] outline-none text-sm mobile-m:text-lg mobile-l:text-lg tablet:text-xl lg:text-base tablet:py-4 lg:py-2.5"
-                            />
+                            <div key={index}>
+                              <input
+                                type="text"
+                                placeholder={`Nombre Acompañante ${index + 1}`}
+                                value={formData.guestNames[index] || ""}
+                                onChange={(e) =>
+                                  handleGuestNameChange(index, e.target.value)
+                                }
+                                className={`w-full bg-[#E8E6E1] border-none rounded-md px-4 py-2 font-serif text-gray-700 placeholder-gray-400 focus:ring-1 outline-none text-sm mobile-m:text-lg mobile-l:text-lg tablet:text-xl lg:text-base tablet:py-4 lg:py-2.5 ${errors[`guestName_${index}`] ? "ring-1 ring-red-500" : "focus:ring-[#8B7E60]"}`}
+                              />
+                              {errors[`guestName_${index}`] && (
+                                <p className="text-red-500 text-xs mt-1 font-serif italic tablet:text-sm">
+                                  {errors[`guestName_${index}`]}
+                                </p>
+                              )}
+                            </div>
                           ),
                         )}
                       </div>
@@ -357,7 +433,7 @@ const RSVPForm = () => {
                       name="song"
                       value={formData.song}
                       onChange={handleChange}
-                      placeholder="Canción"
+                      placeholder="Canción (Opcional)"
                       className="w-full bg-[#E8E6E1] border-none px-4 py-2 font-serif text-gray-700 placeholder-gray-400 focus:ring-1 focus:ring-[#8B7E60] outline-none tablet:py-4 tablet:text-lg lg:text-base lg:py-2.5"
                     />
                     {errors.song && (
