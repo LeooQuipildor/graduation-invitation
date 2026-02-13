@@ -75,11 +75,35 @@ const HeroSection = () => {
               Es increíble hasta donde llega uno sin saberse las tablas de
               multiplicar.
             </p>
-            <p className="mb-1 mobile-m:mb-2 mobile-l:mb-2 tablet:mb-3">
-              Con calculadora, obvio: soy contadora, no calculadora.
-            </p>
           </div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, y: [0, 5, 0] }}
+            transition={{
+              opacity: { delay: 2, duration: 1 },
+              y: { repeat: Infinity, duration: 1.5, ease: "easeInOut" },
+            }}
+            className="mt-4 flex justify-center text-[#c5b37f] w-full"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 mobile-m:h-8 mobile-m:w-8 tablet:h-10 tablet:w-10"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19 14l-7 7m0 0l-7-7m7 7V3"
+              />
+            </svg>
+          </motion.div>
         </motion.div>
+
+        {/* Scroll Indicator */}
       </div>
     </section>
   );

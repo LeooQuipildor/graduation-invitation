@@ -56,10 +56,10 @@ const LocationSection = () => {
 
             {/* Nombre del Salón y Dirección */}
             <h3 className="font-serif text-xl mobile-m:text-3xl mobile-l:text-3xl tablet:text-3xl lg:text-2xl text-gold-engraved uppercase tracking-widest mb-1 tablet:mb-3">
-              Salon "Nombre"
+              Barrio Libertad, Carrera 45 #13-16
             </h3>
             <p className="font-serif text-[10px] mobile-m:text-lg mobile-l:text-lg tablet:text-xl lg:text-lg text-gray-500 uppercase tracking-wider mb-4 max-w-xs tablet:max-w-md tablet:mb-6">
-              El lugar donde celebramos que el esfuerzo valió la pena.
+              Después de tanto esfuerzo, llegó el momento de disfrutar el logro.
             </p>
 
             {/* Horario */}
@@ -74,7 +74,7 @@ const LocationSection = () => {
             {/* Mapa Interactivo */}
             <div className="w-full h-40 mobile-m:h-48 mobile-l:h-48 tablet:h-64 lg:h-64 bg-gray-100 mb-4 mobile-m:mb-6 mobile-l:mb-6 tablet:mb-8 lg:mb-6 overflow-hidden border border-gray-200 shadow-inner relative">
               <Map
-                center={[-58.38157, -34.60373]}
+                center={[-75.38196, 9.313426]}
                 zoom={17}
                 theme="light"
                 className="w-full h-full"
@@ -87,7 +87,7 @@ const LocationSection = () => {
                   showFullscreen={true}
                 />
 
-                <MapMarker longitude={-58.38157} latitude={-34.60373}>
+                <MapMarker longitude={-75.38196} latitude={9.313426}>
                   <MarkerContent>
                     <div className="text-[#7f8c6c] drop-shadow-md">
                       <MapPin
@@ -103,7 +103,7 @@ const LocationSection = () => {
 
             {/* Botón Abrir en Maps */}
             <a
-              href="https://goo.gl/maps/xyz"
+              href="https://www.google.com/maps/place/9%C2%B018'48.3%22N+75%C2%B022'55.1%22W/@9.313422,-75.382076,21z/data=!4m4!3m3!8m2!3d9.313426!4d-75.38196?hl=es&entry=ttu&g_ep=EgoyMDI2MDIxMC4wIKXMDSoASAFQAw%3D%3D"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#7f8c6c] text-white font-serif font-bold text-xs mobile-m:text-sm mobile-l:text-sm tablet:text-lg lg:text-base tablet:px-16 tablet:py-4 lg:px-14 lg:py-3 px-10 py-3 hover:bg-[#6c7a5a] transition-colors uppercase tracking-[0.2em] shadow-md rounded-none"
