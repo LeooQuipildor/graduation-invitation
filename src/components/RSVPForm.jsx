@@ -13,6 +13,7 @@ const RSVPForm = () => {
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSending, setIsSending] = useState(false);
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
@@ -84,21 +85,66 @@ const RSVPForm = () => {
       return;
     }
 
-    // Here you would typically send the data to a backend
-    // console.log("Form submitted:", formData);
-    setIsSubmitted(true);
+    // URL del Google Apps Script (Sigue las instrucciones en GOOGLE_SHEETS_SETUP.md para obtenerla)
+    const GOOGLE_SCRIPT_URL =
+      "https://script.google.com/macros/s/AKfycbwexXga4mNoBh_izJMaMO_YRgVprTTA5N2agYG1PWzAUBdrogZflIXvmsxxciKlTOCjXw/exec";
 
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        name: "",
-        attending: "",
-        guests: "1",
-        dietary: "",
-        song: "",
+    setIsSending(true);
+
+    const formDataToSend = new FormData();
+    formDataToSend.append("Fecha", new Date().toLocaleString());
+    formDataToSend.append("Nombre", formData.name);
+    // Si asiste, se marca "Sí", si no "No"
+    const isAttending = formData.attending === "yes";
+    formDataToSend.append("Asistencia", isAttending ? "Sí" : "No");
+
+    // Total de invitados seleccionados (ej: 0, 1, 2)
+    const guestsCount = parseInt(formData.guests) || 0;
+    formDataToSend.append("Invitados", guestsCount);
+
+    // Calcular TotalAsistentes: 1 (quien llena el form) + invitados extra (si asiste)
+    // Si no asiste, total es 0
+    const totalAttendees = isAttending ? 1 + guestsCount : 0;
+    formDataToSend.append("TotalAsistentes", totalAttendees);
+
+    // Convert guest names object to string
+    const guestNamesString = Object.values(formData.guestNames)
+      .filter(Boolean)
+      .join(", ");
+    formDataToSend.append("NombresInvitados", guestNamesString);
+
+    formDataToSend.append("Dieta", formData.dietary);
+    formDataToSend.append("Cancion", formData.song);
+
+    fetch(GOOGLE_SCRIPT_URL, {
+      method: "POST",
+      body: formDataToSend,
+      mode: "no-cors", // Important for Google Apps Script simple POSTs
+    })
+      .then(() => {
+        setIsSubmitted(true);
+        // Reset form after 3 seconds
+        setTimeout(() => {
+          setIsSubmitted(false);
+          setFormData({
+            name: "",
+            attending: "",
+            guests: "1",
+            guestNames: {},
+            dietary: "",
+            song: "",
+          });
+        }, 3000);
+      })
+      .catch((error) => {
+        console.error("Error!", error.message);
+        alert(
+          "Hubo un error al enviar el formulario. Por favor intenta de nuevo.",
+        );
+      })
+      .finally(() => {
+        setIsSending(false);
       });
-    }, 3000);
   };
 
   if (isSubmitted) {
@@ -327,9 +373,10 @@ const RSVPForm = () => {
               <div className="pt-4 flex justify-center tablet:pt-8 lg:pt-4">
                 <button
                   type="submit"
-                  className="bg-[#7f8c6c] text-white font-serif font-bold text-sm px-12 py-3 hover:bg-[#6c7a5a] transition-colors uppercase tracking-[0.2em] shadow-md rounded-none tablet:text-lg lg:text-base tablet:px-20 lg:px-16 tablet:py-5 lg:py-3.5"
+                  disabled={isSending}
+                  className={`bg-[#7f8c6c] text-white font-serif font-bold text-sm px-12 py-3 hover:bg-[#6c7a5a] transition-colors uppercase tracking-[0.2em] shadow-md rounded-none tablet:text-lg lg:text-base tablet:px-20 lg:px-16 tablet:py-5 lg:py-3.5 ${isSending ? "opacity-70 cursor-not-allowed" : ""}`}
                 >
-                  Enviar
+                  {isSending ? "Enviando..." : "Enviar"}
                 </button>
               </div>
             </form>
