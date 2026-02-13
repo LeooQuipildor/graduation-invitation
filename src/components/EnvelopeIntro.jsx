@@ -36,7 +36,7 @@ const EnvelopeIntro = ({ onOpenComplete }) => {
         className="relative w-full max-w-2xl px-4 flex flex-col items-center select-none z-10 will-change-transform"
         initial={{ scale: 1, opacity: 1 }}
         animate={
-          isOpen ? { scale: 20, opacity: 0 } : { scale: 1.5, opacity: 1 }
+          isOpen ? { scale: 20, opacity: 0 } : { scale: 1.1, opacity: 1 }
         }
         transition={{ duration: 2.5, delay: 0.1, ease: "easeInOut" }}
       >
@@ -46,7 +46,7 @@ const EnvelopeIntro = ({ onOpenComplete }) => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.8 }}
-            className="absolute md:-top-20 -top-42 mt-3 text-gold-engraved font-serif tracking-widest text-xs uppercase z-30"
+            className="absolute md:-top-20 -top-42 mt-3 text-gold-engraved font-serif tracking-widest text-xs uppercase z-30 tablet:text-xl tablet:mt-16"
           >
             <motion.span
               animate={{ scale: [1, 1.1, 1], opacity: 1 }}
