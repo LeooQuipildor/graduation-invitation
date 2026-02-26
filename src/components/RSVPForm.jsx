@@ -211,6 +211,14 @@ const RSVPForm = () => {
                   Tu asistencia ha sido confirmada. <br />
                   ¡Te esperamos para celebrar!
                 </p>
+                <div className="mt-6 pt-6 border-t border-gray-100">
+                  <p className="font-serif text-gray-500 text-sm italic leading-relaxed tablet:text-base">
+                    El mejor regalo es compartir este momento contigo. <br />
+                    Pero si tu corazón (y tu billetera) desean tener un detalle
+                    adicional, <br />
+                    agradecemos la tradicional lluvia de sobres. ✉️✨
+                  </p>
+                </div>
               </>
             ) : (
               <>
@@ -233,7 +241,7 @@ const RSVPForm = () => {
                 setFormData({
                   name: "",
                   attending: "",
-                  guests: "1",
+                  guests: "0",
                   guestNames: {},
                   dietary: "",
                   song: "",
@@ -369,7 +377,7 @@ const RSVPForm = () => {
                 >
                   <div>
                     <label className="block font-serif text-[#8B7E60] uppercase tracking-widest text-sm mb-2 mobile-m:text-lg mobile-l:text-lg tablet:text-xl lg:text-sm tablet:mb-3">
-                      Numero de acompañantes (Máx 4)
+                      Numero de acompañantes (Máx 2)
                     </label>
                     <select
                       name="guests"
@@ -380,8 +388,6 @@ const RSVPForm = () => {
                       <option value="0">0</option>
                       <option value="1">1</option>
                       <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
                     </select>
 
                     {parseInt(formData.guests) > 0 && (
