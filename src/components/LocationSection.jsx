@@ -7,7 +7,7 @@ import {
   MapControls,
 } from "@/components/ui/map";
 
-const LocationSection = () => {
+const LocationSection = ({ locationName, address, mapsUrl }) => {
   return (
     <section className="relative w-full min-h-svh py-10 px-4 flex flex-col items-center justify-center overflow-hidden tablet:py-16 lg:py-12">
       {/* Fondo Texturizado - SIN CAMBIOS */}
@@ -56,7 +56,7 @@ const LocationSection = () => {
 
             {/* Nombre del Salón y Dirección */}
             <h3 className="font-serif text-xl mobile-m:text-3xl mobile-l:text-3xl tablet:text-3xl lg:text-2xl text-gold-engraved uppercase tracking-widest mb-1 tablet:mb-3">
-              Barrio Libertad, Carrera 45 #13-16
+              {locationName}, {address}
             </h3>
             <p className="font-serif text-[10px] mobile-m:text-lg mobile-l:text-lg tablet:text-xl lg:text-lg text-gray-500 uppercase tracking-wider mb-4 max-w-xs tablet:max-w-md tablet:mb-6">
               Después de tanto esfuerzo, llegó el momento de disfrutar el logro.
@@ -68,7 +68,7 @@ const LocationSection = () => {
                 size={16}
                 className="tablet:w-6 tablet:h-6 lg:w-5 lg:h-5"
               />
-              <span>A PARTIR DE 19:00 HS</span>
+              <span>A PARTIR DE 07:00 PM</span>
             </div>
 
             {/* Mapa Interactivo */}
@@ -103,7 +103,7 @@ const LocationSection = () => {
 
             {/* Botón Abrir en Maps */}
             <a
-              href="https://www.google.com/maps/place/9%C2%B018'48.3%22N+75%C2%B022'55.1%22W/@9.313422,-75.382076,21z/data=!4m4!3m3!8m2!3d9.313426!4d-75.38196?hl=es&entry=ttu&g_ep=EgoyMDI2MDIxMC4wIKXMDSoASAFQAw%3D%3D"
+              href={mapsUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#7f8c6c] text-white font-serif font-bold text-xs mobile-m:text-sm mobile-l:text-sm tablet:text-lg lg:text-base tablet:px-16 tablet:py-4 lg:px-14 lg:py-3 px-10 py-3 hover:bg-[#6c7a5a] transition-colors uppercase tracking-[0.2em] shadow-md rounded-none"

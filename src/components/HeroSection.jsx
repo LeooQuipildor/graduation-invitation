@@ -46,24 +46,24 @@ const HeroSection = () => {
             </div>
 
             <div className="flex items-center justify-between py-0 mobile-m:py-3 mobile-l:py-3 tablet:py-4 w-full">
-              {/* Sabado - Alineado a la izquierda */}
+              {/* Jueves - Alineado a la izquierda */}
               <div className="w-1/3 flex justify-start mobile-s:justify-center">
                 <span className="font-serif text-base mobile-m:text-2xl mobile-l:text-3xl tablet:text-3xl lg:text-2xl text-black border-t border-b border-black/80 py-1 tablet:py-2">
-                  Sabado
+                  Jueves
                 </span>
               </div>
 
               {/* Día 01 - Centrado */}
               <div className="w-1/3 text-center">
                 <span className="font-serif text-5xl mobile-m:text-5xl mobile-l:text-6xl tablet:text-7xl lg:text-6xl text-black font-bold leading-none">
-                  01
+                  05
                 </span>
               </div>
 
               {/* Hora - Alineado a la derecha */}
               <div className="w-1/3 flex justify-end mobile-s:justify-center">
                 <span className="font-serif text-base mobile-m:text-2xl mobile-l:text-3xl tablet:text-3xl lg:text-2xl text-black border-t border-b border-black/80 py-1 tablet:py-2">
-                  19:00hs
+                  07:00 PM
                 </span>
               </div>
             </div>

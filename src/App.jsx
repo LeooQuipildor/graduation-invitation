@@ -27,13 +27,14 @@ function App() {
   // Configuración del evento - Personaliza estos valores
   const eventConfig = {
     // Fecha del evento (formato: YYYY-MM-DD HH:MM:SS)
-    eventDate: "2026-03-01 19:00:00",
+    eventDate: "2026-03-05 19:00:00",
 
     // Ubicación
     location: {
-      name: "Salón de Eventos Elegance",
-      address: "Av. Principal 1234, Ciudad",
-      mapsUrl: "https://maps.google.com/?q=Salon+de+Eventos", // Reemplaza con tu URL de Google Maps
+      name: "Barrio Libertad",
+      address: "Carrera 45 #13-16",
+      mapsUrl:
+        "https://www.google.com/maps/place/9%C2%B018'48.3%22N+75%C2%B022'55.1%22W/@9.313422,-75.382076,21z/data=!4m4!3m3!8m2!3d9.313426!4d-75.38196?hl=es&entry=ttu&g_ep=EgoyMDI2MDIxMC4wIKXMDSoASAFQAw%3D%3D",
     },
 
     // Tus iniciales para el footer
